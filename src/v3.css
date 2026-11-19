@@ -1,0 +1,1023 @@
+/* V3 : retour à un style éditorial plus rond, inspiré d'EasyLoc et de Finance, mais un peu plus sobre (ingénierie).
+   Boutons en pilules, cartes à 18 px, surbrillances par halo coloré plutôt que par déplacement. */
+:root{--acc:#9ee3cc;--acc2:#71c7f5;--acc-rgb:158 227 204;--r-card:18px;--r-tile:14px;--ease:cubic-bezier(.22,.8,.3,1);
+ --glow:0 0 0 1px rgb(var(--acc-rgb)/.28),0 18px 50px -20px rgb(var(--acc-rgb)/.55);
+ --plate:linear-gradient(160deg,#17303ccc,#0f212bdd);--plate-hover:linear-gradient(160deg,#1f3d4be6,#122a36ee)}
+
+/* ---------- Boutons, partout ---------- */
+.v2 .icon-button{border-radius:999px;transition:background .2s,color .2s,box-shadow .25s}
+.v2 .icon-button:hover{background:rgb(var(--acc-rgb)/.1);color:#e6fff5;box-shadow:0 0 0 1px rgb(var(--acc-rgb)/.25)}
+.v2 .source-button{border-radius:999px;border:1px solid #a9d3d02e;background:#12262fa8;padding:7px 13px;transition:background .2s,border-color .2s,color .2s,box-shadow .25s}
+.v2 .source-button:hover{border-color:rgb(var(--acc-rgb)/.5);background:#183441d0;color:#e6fff5;box-shadow:var(--glow)}
+.v2 .primary-button,.v2 .secondary-button{border-radius:999px;padding-left:20px;padding-right:20px;transition:filter .2s,box-shadow .25s,background .2s,border-color .2s}
+.v2 .primary-button{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#0b1d24;box-shadow:inset 0 1px 0 #ffffff40}
+.v2 .primary-button:hover:not(:disabled){filter:brightness(1.07);box-shadow:inset 0 1px 0 #ffffff40,0 0 28px -6px rgb(var(--acc-rgb)/.6)}
+.v2 .secondary-button:hover{box-shadow:var(--glow);border-color:rgb(var(--acc-rgb)/.45)}
+.v2 .map-menu-button{border-radius:999px;padding:10px 15px;transition:border-color .2s,box-shadow .25s,background .2s}
+.v2 .map-menu-button:hover,.v2 .map-menu-button.active{border-color:rgb(var(--acc-rgb)/.5);box-shadow:var(--glow)}
+.v2 .map-back{transition:box-shadow .25s,border-color .2s}.v2 .map-back:hover{border-color:rgb(var(--acc-rgb)/.5);box-shadow:var(--glow)}
+.v2 .panel{border-radius:var(--r-card)}
+.v2 .data-dropdown{border-radius:16px;overflow:auto}
+.toast{border-radius:999px!important}
+@media(min-width:761px){.modal{border-radius:22px}.modal-header{border-radius:22px 22px 0 0}}
+
+/* ---------- En-tête de l'accueil ---------- */
+.v2 .home-header{height:104px;padding:0;background:linear-gradient(180deg,#0c1822e6,#0c18229c);border-bottom:1px solid #b9d6e41a;display:block}
+.header-inner{width:min(1100px,90%);height:100%;margin:auto;display:flex;align-items:center;gap:22px}
+.v2 .home-header .brand{flex-shrink:0;border-radius:16px;padding:6px 8px;margin-left:-8px;transition:background .2s}
+.v2 .home-header .brand:hover{background:rgb(var(--acc-rgb)/.06)}
+.idiger-logo{display:flex;align-items:center;gap:11px}
+.idiger-mark{width:42px;height:42px;display:block}
+.idiger-word{font-family:'DM Sans Variable',sans-serif;font-weight:750;font-size:25px;letter-spacing:.14em;color:#eaf6f2;line-height:1}
+.co-flag{width:27px;height:18px;display:block;margin-left:-2px;filter:drop-shadow(0 2px 4px #0006);align-self:flex-start;margin-top:4px}
+.brand-sep{width:1px;height:42px;background:linear-gradient(180deg,transparent,#cfe5ee40,transparent);flex-shrink:0}
+.v2 .home-header .platform-title{flex:0 1 auto;align-items:flex-start;gap:5px;padding:0;min-width:0}
+.v2 .home-header .platform-title strong{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-weight:450;font-size:clamp(20px,2vw,28px);letter-spacing:-.012em;line-height:1.05;color:#f0f7f5;white-space:nowrap}
+.v2 .home-header .platform-title span{font-family:'DM Sans Variable',sans-serif;font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#93b8b6}
+.header-principles{list-style:none;margin:0 0 0 auto;padding:0 0 0 18px;border-left:1px solid #b9d6e420;display:grid;gap:2px;text-align:right}
+.header-principles li{font-size:11.5px;line-height:1.45;color:#a9bdc4;white-space:nowrap}
+.header-principles li:first-child{color:#e3f3ee;font-weight:600}
+.header-principles li:first-child::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc);margin-right:8px;vertical-align:1px}
+.v2 .home-header .help-button{width:38px;height:38px;flex-shrink:0;border:1px solid #a9d3d02e;margin-right:-4px}
+
+/* ---------- Contenu de l'accueil ---------- */
+.v2 .home-v3{padding-top:30px}
+.v2 .home-v3 .risk-grid{gap:16px}
+.v2 .home-v3 .risk-card{aspect-ratio:1.75;border-radius:var(--r-card);background:var(--plate);border-color:#a9c9d324;box-shadow:inset 0 1px 0 #ffffff0d,0 14px 36px -18px #000a;transform:none;transition:border-color .25s,box-shadow .3s var(--ease),background .25s}
+.v2 .home-v3 .risk-card:hover{transform:none;background:var(--plate-hover);border-color:color-mix(in srgb,var(--risk-color),transparent 40%);box-shadow:inset 0 1px 0 #ffffff14,0 0 0 1px color-mix(in srgb,var(--risk-color),transparent 70%),0 20px 50px -18px color-mix(in srgb,var(--risk-color),transparent 45%)}
+.v2 .home-v3 .risk-art{height:100%;top:-8%;left:12%;width:88%;transition:transform .5s var(--ease)}
+.v2 .home-v3 .risk-card:hover .risk-art{transform:scale(1.04)}
+.v2 .home-v3 .risk-card h2{bottom:16px;left:20px;font-size:clamp(15px,1.35vw,19px);font-weight:550}
+
+.v2 .home-v3 .secondary-risk-grid{gap:12px;margin:14px 0 0}
+.v2 .home-v3 .inactive-risk,.v2 .home-v3 .add-risk{aspect-ratio:auto;height:88px;border-radius:var(--r-tile);padding:13px 14px;opacity:1;cursor:default;transition:background .2s,border-color .2s,box-shadow .25s}
+.v2 .home-v3 .inactive-risk{background:#13232c8c;border-color:#b2c5d01c}
+.v2 .home-v3 .inactive-risk svg{width:22px;height:22px;color:#8ea8b3;opacity:.6;transition:opacity .2s,color .2s}
+.v2 .home-v3 .inactive-risk h3{font-size:11px;color:#8fa4ae;opacity:.8;transition:color .2s,opacity .2s}
+.v2 .home-v3 .inactive-risk:hover{background:#1a303bc4;border-color:#b2d6e040;box-shadow:0 0 0 1px #b2d6e014,0 14px 34px -18px #000c}
+.v2 .home-v3 .inactive-risk:hover svg{opacity:1;color:#c3dde6}.v2 .home-v3 .inactive-risk:hover h3{opacity:1;color:#dbe9ee}
+.pending-tip{position:absolute;left:50%;bottom:calc(100% + 9px);transform:translate(-50%,4px);white-space:nowrap;pointer-events:none;opacity:0;font-size:11px;font-weight:600;letter-spacing:.02em;color:#10222a;background:linear-gradient(135deg,#f1dca6,#e2bf79);padding:6px 12px;border-radius:999px;box-shadow:0 10px 24px -8px #000c;transition:opacity .12s ease,transform .18s var(--ease);z-index:5}
+.pending-tip::after{content:'';position:absolute;top:100%;left:50%;margin-left:-5px;border:5px solid transparent;border-top-color:#e6c584}
+.inactive-risk:hover .pending-tip,.inactive-risk:focus-visible .pending-tip{opacity:1;transform:translate(-50%,0)}
+
+/* Le « + » : il doit attirer l'œil. Halo qui respire au repos, relief et lumière au survol. */
+.v2 .home-v3 .add-risk{cursor:pointer;color:#dff7ee;overflow:visible;isolation:isolate;flex-direction:column;gap:4px;background:linear-gradient(150deg,#1d3d47d9,#13303ae6);border:1px solid rgb(var(--acc-rgb)/.35);box-shadow:inset 0 1px 0 #ffffff1c,0 0 22px -8px rgb(var(--acc-rgb)/.45)}
+.v2 .home-v3 .add-risk svg{width:26px;height:26px;transition:transform .45s var(--ease)}
+.add-risk small{font-size:10.5px;letter-spacing:.06em;color:#a8d9c9;transition:color .2s}
+.add-risk-halo{position:absolute;inset:-1px;border-radius:inherit;z-index:-1;pointer-events:none;box-shadow:0 0 0 0 rgb(var(--acc-rgb)/.45);animation:add-breathe 2.8s ease-out infinite}
+@keyframes add-breathe{0%{box-shadow:0 0 0 0 rgb(var(--acc-rgb)/.42)}70%,100%{box-shadow:0 0 0 12px rgb(var(--acc-rgb)/0)}}
+.v2 .home-v3 .add-risk:hover{background:linear-gradient(150deg,#2a5a62,#1a4450);border-color:rgb(var(--acc-rgb)/.85);box-shadow:inset 0 1px 0 #ffffff38,inset 0 -2px 0 #0003,0 0 0 1px rgb(var(--acc-rgb)/.4),0 0 40px -4px rgb(var(--acc-rgb)/.65),0 22px 40px -16px #000e}
+.v2 .home-v3 .add-risk:hover svg{transform:rotate(90deg) scale(1.12);filter:drop-shadow(0 0 8px rgb(var(--acc-rgb)/.9))}
+.v2 .home-v3 .add-risk:hover small{color:#effffa}
+@media(prefers-reduced-motion:reduce){.add-risk-halo{animation:none}}
+
+/* Partie basse, séparée : Climatología + Modelo à gauche, Biblioteca en face. */
+.home-tools{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr);gap:16px;margin-top:30px;padding-top:26px;border-top:1px solid #b9d6e41c}
+.home-tools-stack{display:grid;gap:12px}
+.v2 .home-v3 .climate-banner,.v2 .home-v3 .multirisk-banner,.library-button{margin:0;min-height:72px;padding:15px 22px;border-radius:var(--r-card);background:var(--plate);border:1px solid #a7d6d724;box-shadow:inset 0 1px 0 #ffffff0d;display:flex;align-items:center;gap:18px;text-align:left;transition:background .25s,border-color .25s,box-shadow .3s var(--ease)}
+.v2 .home-v3 .climate-banner:hover,.v2 .home-v3 .multirisk-banner:hover,.library-button:hover{background:var(--plate-hover);border-color:rgb(var(--acc-rgb)/.45);box-shadow:inset 0 1px 0 #ffffff14,var(--glow)}
+.home-v3 .multirisk-banner>div,.library-button>div{display:flex;flex-direction:column;gap:6px}
+.v2 .home-v3 .climate-banner strong,.v2 .home-v3 .multirisk-banner strong,.library-button strong{font-size:16px;font-weight:550;letter-spacing:-.015em}
+.home-v3 .multirisk-banner div>span,.library-button div>span{font-size:11px;color:#9bb5bd}
+.home-v3 .climate-banner>svg:last-child,.home-v3 .multirisk-banner>svg:last-child,.library-button>svg:last-child{margin-left:auto;color:#a5c6cc;transition:transform .3s var(--ease),color .2s}
+.home-v3 .climate-banner:hover>svg:last-child,.home-v3 .multirisk-banner:hover>svg:last-child,.library-button:hover>svg:last-child{transform:translate(2px,-2px);color:var(--acc)}
+.library-button{flex-direction:column;align-items:flex-start;justify-content:space-between;padding:20px 22px;position:relative;background:linear-gradient(160deg,#1a2f45d0,#122236e0);border-color:#a9c3e02a}
+.library-button>svg:first-child{color:#a9c7ea}
+.library-button>svg:last-child{position:absolute;top:18px;right:20px}
+.library-button strong{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-weight:500;font-size:19px;line-height:1.2}
+.v2 .home-v3 .home-footer{padding:22px 0 24px}
+.v2 .home-v3 .home-footer>button{border-radius:999px;padding:6px 12px;margin-right:-12px;transition:background .2s,color .2s}
+.v2 .home-v3 .home-footer>button:hover{background:rgb(var(--acc-rgb)/.08);color:#e6fff5}
+
+/* ---------- Fenêtre « Intención de la propuesta » ---------- */
+.intent-modal{max-width:720px}
+.intent-modal .method-lead{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:19px;line-height:1.5;color:#e8f2ef}
+.intent-modal .method-step p{font-size:13px;line-height:1.65;color:#aabcc4}
+.intent-modal .method-step>svg{color:var(--acc)}
+.horizon-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.horizon-chips span{font-size:10.5px;font-weight:600;color:#cdeee2;border:1px solid rgb(var(--acc-rgb)/.3);background:rgb(var(--acc-rgb)/.07);border-radius:999px;padding:4px 11px}
+
+/* ---------- Écrans intermédiaires et mobiles ---------- */
+@media(max-width:1180px){.header-principles li{font-size:10.5px}.idiger-word{font-size:21px}.idiger-mark{width:36px;height:36px}}
+@media(max-width:1000px){.header-principles{display:none}}
+@media(max-height:820px) and (min-width:761px){.v2 .home-header{height:92px}.v2 .home-v3{padding-top:22px}.v2 .home-v3 .risk-card{aspect-ratio:1.95}.home-tools{margin-top:22px;padding-top:20px}}
+@media(max-width:760px){
+ .v2 .home-header{height:auto;padding:16px 20px}
+ .header-inner{width:auto;flex-wrap:wrap;gap:10px 14px}
+ .brand-sep{display:none}
+ .v2 .home-header .platform-title{position:static;order:3;flex-basis:100%}
+ .v2 .home-header .platform-title strong{font-size:21px;white-space:normal}
+ .v2 .home-header .help-button{margin-left:auto}
+ .idiger-word{font-size:19px}.idiger-mark{width:32px;height:32px}
+ .v2 .home-v3 .risk-card{aspect-ratio:1.9}
+ .home-tools{grid-template-columns:1fr}
+ .library-button{flex-direction:row;align-items:center}
+ .library-button>svg:last-child{position:static}
+}
+
+/* Correctifs */
+.co-flag{border-radius:4px;overflow:hidden;box-shadow:inset 0 0 0 1px #ffffff30,0 2px 6px #0007}
+.v2 .home-v3 .add-risk{opacity:1!important}
+@media(min-width:761px){.v2.is-home #main-content{min-height:calc(100svh - 104px);display:flex}.v2 .home-v3{display:flex;flex-direction:column;justify-content:center;padding:26px 0 0}.v2 .home-v3 .home-footer{margin-top:auto;padding-top:34px}}
+.v2 .home-v3 .add-risk .add-risk-halo{position:absolute;inset:-1px;bottom:-1px;writing-mode:horizontal-tb;font-size:0;letter-spacing:0;background:none}
+.v2 .home-v3 .risk-art{top:-4%;left:16%;width:84%;height:86%}
+.v2 .home-v3 .risk-card h2{text-shadow:0 2px 12px #0b1820}
+@media(max-height:820px) and (min-width:761px){.header-inner{width:min(970px,87%)}}
+@media(min-width:1500px){.header-inner{width:1050px}}
+.home-v3 .climate-banner>svg:first-child,.home-v3 .multirisk-banner>svg:first-child{width:26px;height:26px;margin:0;flex-shrink:0}
+.intent-modal .modal-header h2{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-weight:480;letter-spacing:-.01em}
+.intent-modal .method-content{padding-bottom:34px}
+
+/* ---------- V3.1 : barre du haut pleine largeur, logo bouclier, riesgos complementarios, Design Next Step doré ---------- */
+:root{--content-w:min(1100px,calc(100vw - 380px))}
+@media(max-height:820px) and (min-width:761px){:root{--content-w:min(970px,calc(100vw - 380px))}}
+@media(min-width:1500px){:root{--content-w:1050px}}
+@media(min-width:1001px){.v2 .home-content.home-v3{width:var(--content-w)}}
+.header-grid{height:100%;display:grid;grid-template-columns:1fr var(--content-w) 1fr;align-items:center}
+.v2 .home-header .brand{justify-self:start;margin:0 0 0 22px;padding:6px 8px}
+.header-center{display:flex;align-items:center;gap:20px;min-width:0;height:100%}
+.v2 .home-header .brand-sep{width:2px;height:46px;border-radius:2px;background:linear-gradient(180deg,#9ee3cc00,#9ee3ccaa 30%,#71c7f5aa 70%,#71c7f500)}
+.v2 .home-header .help-button{justify-self:end;margin:0 26px 0 0}
+.header-principles{padding-right:0}
+.header-principles li:first-child{font-weight:700}
+.header-principles li:first-child::before{content:none}
+.idiger-logo{gap:10px}
+.idiger-shield{width:34px;height:39px;display:block;filter:drop-shadow(0 3px 8px #0008)}
+.idiger-word{font-size:21px;letter-spacing:.13em}
+@media(max-width:1000px){.header-grid{display:flex;gap:16px;padding:0 20px}.v2 .home-header .brand{margin:0}.header-center{flex:1}.v2 .home-header .help-button{margin:0 0 0 auto}}
+@media(max-width:760px){.header-grid{flex-wrap:wrap;padding:0}.header-center{order:3;flex-basis:100%;height:auto}.v2 .home-header .brand-sep{display:none}}
+
+/* Pied : seulement Design Next Step, au centre, en pastille dorée */
+.v2 .home-v3 .home-footer{justify-content:center}
+.v2 .home-v3 .home-footer>button.next-step-pill{margin:0;display:inline-flex;align-items:center;gap:10px;padding:10px 20px 10px 17px;border-radius:999px;font-size:13px;font-weight:650;letter-spacing:.01em;color:#21180a;background:linear-gradient(135deg,#f6e3ae,#ddb46a 55%,#c99a4c);border:1px solid #fff3cf66;box-shadow:inset 0 1px 0 #ffffff70,0 10px 28px -12px #e0b56acc;transition:filter .2s,box-shadow .3s var(--ease)}
+.v2 .home-v3 .home-footer>button.next-step-pill:hover{color:#1a1206;filter:brightness(1.06);background:linear-gradient(135deg,#f9ebc2,#e5bf78 55%,#d1a458);box-shadow:inset 0 1px 0 #ffffff80,0 0 0 1px #f3d48f88,0 0 36px -4px #e9c27bcc}
+.next-step-pill .next-count{background:#2a1d0a22;color:#2a1d0a;border:0;border-radius:999px;font-size:10px;font-weight:700;padding:2px 7px}
+
+/* Riesgos complementarios */
+.v3-additional{padding:22px 32px 30px}
+.v3-additional .additional-lead{font-size:14px;color:#b4c6cd;margin-bottom:20px}
+.risk-pills{display:flex;flex-wrap:wrap;gap:10px}
+.risk-pill{display:inline-flex;align-items:center;gap:9px;padding:10px 16px 10px 13px;border-radius:999px;border:1px solid #a9d3d030;background:#13262fc4;color:#d6e7ec;font-size:13px;font-weight:500;transition:background .2s,border-color .2s,box-shadow .25s,color .2s}
+.risk-pill svg{color:var(--acc)}
+.risk-pill:hover{border-color:rgb(var(--acc-rgb)/.5);background:#183441;box-shadow:var(--glow);color:#fff}
+.risk-pill.active{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#0b1d24;border-color:transparent;box-shadow:0 0 26px -6px rgb(var(--acc-rgb)/.6)}
+.risk-pill.active svg{color:#0b1d24}
+.risk-pill-detail{display:flex;gap:18px;margin-top:20px;padding:22px 24px;border-radius:var(--r-card);background:var(--plate);border:1px solid rgb(var(--acc-rgb)/.25);box-shadow:inset 0 1px 0 #ffffff0d;animation:pill-in .3s var(--ease)}
+.risk-pill-detail>svg{color:var(--acc);flex-shrink:0;margin-top:2px}
+.risk-pill-detail h3{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:20px;font-weight:500;margin-bottom:8px}
+.risk-pill-detail p{font-size:13.5px;line-height:1.7;color:#b4c6cd}
+.risk-pill-detail small{display:inline-block;margin-top:12px;font-size:10.5px;color:#e2c27f;border:1px solid #e2c27f44;border-radius:999px;padding:3px 10px}
+@keyframes pill-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.v3-additional>.source-button{margin-top:22px}
+.additional-modal .modal-header h2{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-weight:480}
+@media(max-width:760px){.v3-additional{padding:18px}.risk-pill{font-size:12px}.risk-pill-detail{padding:18px;gap:12px}}
+.additional-risks.v3-additional>article.risk-pill-detail{align-items:flex-start;padding:22px 26px;border-top:1px solid rgb(var(--acc-rgb)/.25);gap:18px}
+.additional-risks.v3-additional>article.risk-pill-detail>svg{margin-top:4px}
+.additional-risks.v3-additional>article.risk-pill-detail p{max-width:760px;font-size:13.5px;margin-top:0}
+@media(max-width:760px){.additional-risks.v3-additional>article.risk-pill-detail{flex-wrap:nowrap;padding:18px}}
+
+/* ---------- V3.2 : fenêtre Riesgos complementarios en deux colonnes ---------- */
+.modal-subtitle{font-size:13px;color:#a9bcc4;margin-top:6px;letter-spacing:0}
+.additional-modal.wide{width:1060px}
+.v3-additional{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;padding:26px 32px 32px!important}
+.pill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-content:start}
+.pill-grid .risk-pill{flex-direction:column;align-items:flex-start;justify-content:space-between;gap:16px;min-height:104px;padding:16px 18px;border-radius:var(--r-card);text-align:left;font-size:13.5px;font-weight:550;line-height:1.3;background:var(--plate)}
+.pill-grid .risk-pill:last-child:nth-child(odd){grid-column:1/-1}
+.pill-grid .risk-pill svg{width:30px;height:30px;color:var(--acc);transition:transform .35s var(--ease)}
+.pill-grid .risk-pill:hover svg,.pill-grid .risk-pill.active svg{transform:scale(1.1)}
+.pill-grid .risk-pill.active{box-shadow:0 0 28px -6px rgb(var(--acc-rgb)/.6)}
+.pill-reader{position:sticky;top:96px;align-self:start;min-height:420px;border-radius:var(--r-card);background:linear-gradient(160deg,#17303ccc,#0f212bee);border:1px solid rgb(var(--acc-rgb)/.22);box-shadow:inset 0 1px 0 #ffffff0d;padding:28px 28px 26px;display:flex}
+.reader-body{display:flex;flex-direction:column;gap:12px;animation:reader-in .55s var(--ease) both}
+.reader-body>svg{color:var(--acc)}
+.reader-body h3{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:23px;font-weight:500;line-height:1.2}
+.reader-body p{font-size:14px;line-height:1.75;color:#b9cad1}
+.reader-body small{align-self:flex-start;margin-top:auto;font-size:10.5px;color:#e2c27f;border:1px solid #e2c27f44;border-radius:999px;padding:3px 10px}
+.reader-empty{justify-content:center;align-items:flex-start;opacity:.85}
+.reader-empty p{color:#98b0b8;font-size:14px}
+@keyframes reader-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.reader-body{animation:none}}
+@media(max-width:860px){.v3-additional{grid-template-columns:1fr;padding:18px!important}.pill-reader{position:static;min-height:0;order:-1}.pill-grid .risk-pill{min-height:84px;padding:12px 14px}}
+
+/* « Módulo pendiente » : en dessous de la carte, plus grand */
+.pending-tip{bottom:auto;top:calc(100% + 11px);transform:translate(-50%,-4px);font-size:13px;padding:8px 16px;box-shadow:0 12px 28px -8px #000d}
+.pending-tip::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:#f1dca6}
+.inactive-risk:hover .pending-tip,.inactive-risk:focus-visible .pending-tip{transform:translate(-50%,0)}
+.pill-grid .risk-pill.active{background:linear-gradient(160deg,#245563,#17404d);color:#fff;border-color:rgb(var(--acc-rgb)/.75);box-shadow:inset 0 1px 0 #ffffff25,0 0 30px -6px rgb(var(--acc-rgb)/.6)}
+.pill-grid .risk-pill.active svg{color:#d9fff1}
+.pill-reader{align-self:stretch;min-height:0}
+@media(max-width:860px){.pill-reader{align-self:start}}
+
+/* ---------- V3.3 ---------- */
+/* « Módulo pendiente » : flèche collée contre la tuile, bulle large qui descend jusqu'à la ligne de séparation */
+.v2 .home-v3 .secondary-risk-grid{margin-bottom:0}
+.pending-tip{left:0;right:0;transform:translateY(-3px);top:calc(100% + 8px);bottom:auto;white-space:nowrap;text-align:center;font-size:14px;font-weight:650;padding:0;height:38px;line-height:38px;border-radius:12px}
+.pending-tip::after{top:auto;bottom:100%;left:50%;margin-left:-8px;border:8px solid transparent;border-bottom-color:#f1dca6;border-top:0}
+.inactive-risk:hover .pending-tip,.inactive-risk:focus-visible .pending-tip{transform:none}
+.v2 .home-v3 .home-tools-wide{display:grid;grid-template-columns:1fr;gap:12px;margin-top:46px;padding-top:24px}
+/* Bandeaux transversaux pleine largeur, titre et sous-titre centrés */
+.v2 .home-v3 .home-tools-wide>button{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;min-height:64px;padding:12px 22px;margin:0;border-radius:var(--r-card);background:var(--plate);border:1px solid #a7d6d724;box-shadow:inset 0 1px 0 #ffffff0d;text-align:center;transition:background .25s,border-color .25s,box-shadow .3s var(--ease)}
+.v2 .home-v3 .home-tools-wide>button:hover{background:var(--plate-hover);border-color:rgb(var(--acc-rgb)/.45);box-shadow:inset 0 1px 0 #ffffff14,var(--glow)}
+.v2 .home-v3 .home-tools-wide>button>div{display:flex;flex-direction:column;align-items:center;gap:5px}
+.v2 .home-v3 .home-tools-wide>button strong{font-size:16px;font-weight:550;letter-spacing:-.01em}
+.v2 .home-v3 .home-tools-wide>button div>span{font-size:11px;color:#9bb5bd;display:flex;align-items:center;justify-content:center;gap:12px}
+.v2 .home-v3 .home-tools-wide>button>svg:first-child{justify-self:start;width:26px;height:26px;margin:0;color:#b0d9c9}
+.v2 .home-v3 .home-tools-wide>button>svg:last-child{justify-self:end;margin:0;color:#a5c6cc;transition:transform .3s var(--ease),color .2s}
+.v2 .home-v3 .home-tools-wide>button:hover>svg:last-child{transform:translate(2px,-2px);color:var(--acc)}
+.v2 .home-v3 .home-tools-wide>.data-banner{background:linear-gradient(160deg,#1a2f45d0,#122236e0);border-color:#a9c3e02a}
+.v2 .home-v3 .home-tools-wide>.data-banner>svg:first-child{color:#a9c7ea}
+.data-banner .banner-separator,.multirisk-banner .banner-separator{display:inline-block;width:1px;height:11px;background:#9bb5bd66}
+@media(max-height:820px) and (min-width:761px){.v2 .home-v3 .home-tools-wide{margin-top:46px;padding-top:18px;gap:10px}.v2 .home-v3 .home-tools-wide>button{min-height:56px;padding:9px 20px}}
+
+/* ---------- Fenêtre Datos ---------- */
+.data-modal.wide{width:1180px}
+.data-hub{padding:24px 32px 34px;display:grid;gap:34px}
+.data-section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:16px}
+.data-kicker{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--acc)}
+.data-section-head h3{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:24px;font-weight:500;margin:4px 0 6px}
+.data-section-head p{font-size:13px;color:#a9bcc4;max-width:720px}
+.net-switch{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:#0d1b23;border:1px solid #a9d3d024;margin-bottom:14px}
+.net-switch button{border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#a9bcc4;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s}
+.net-switch button small{font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:999px;background:#ffffff10}
+.net-switch button:hover{color:#e6fff5;background:#ffffff08}
+.net-switch button.active{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#0b1d24}
+.net-switch button.active small{background:#0b1d2422}
+.net-body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,1fr);gap:18px;align-items:stretch}
+.net-map{position:relative;border-radius:var(--r-card);background:radial-gradient(circle at 40% 30%,#14303b,#0c1a22 75%);border:1px solid #a9d3d020;padding:14px 14px 10px}
+.net-map>svg{display:block;width:100%;height:auto;max-height:540px}
+.net-localities path{fill:#9ee3cc0a;stroke:#9ee3cc40;stroke-width:1.2;stroke-linejoin:round}
+.net-dot{cursor:pointer;outline:none}
+.net-dot .halo{opacity:.18;transition:opacity .2s}
+.net-dot:hover .halo,.net-dot:focus-visible .halo,.net-dot.on .halo{opacity:.45}
+.net-dot circle:last-child{stroke:#0b1820;stroke-width:3}
+.net-dot.on circle:last-child{stroke:#fff;stroke-width:4}
+.net-tip{position:absolute;z-index:4;pointer-events:none;transform:translate(-50%,calc(-100% - 22px));margin:14px 0 0 14px;min-width:220px;max-width:280px;background:#0f222bf5;border:1px solid rgb(var(--acc-rgb)/.35);border-radius:14px;padding:11px 14px;box-shadow:0 16px 36px -12px #000e;animation:pill-in .18s var(--ease)}
+.net-tip strong{display:block;font-size:13.5px;margin-bottom:3px}
+.net-tip>span{display:block;font-size:11px;color:#9bb5bd;margin-bottom:7px}
+.net-tip ul{margin:0;padding:0 0 0 15px;font-size:12px;color:#d6e7ec;line-height:1.55}
+.net-tip em{font-style:normal;color:#9bb5bd}
+.net-tip small{display:block;margin-top:6px;font-size:10px;color:#e2c27f}
+.net-map-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap}
+.net-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:11.5px;color:#b4c6cd}
+.net-legend span{display:inline-flex;align-items:center;gap:6px}
+.net-legend i{width:9px;height:9px;border-radius:50%}
+.net-legend b{color:#e6f3ef;font-weight:650}
+.frame-switch{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:#ffffff08}
+.frame-switch button{font-size:11px;padding:5px 11px;border-radius:999px;color:#a9bcc4}
+.frame-switch button.active{background:#ffffff16;color:#fff}
+.net-note{font-size:11px;color:#8aa2ab;margin-top:6px}
+.net-panel{border-radius:var(--r-card);background:var(--plate);border:1px solid #a9d3d024;padding:22px 22px 20px;min-height:100%}
+.net-panel-empty{height:100%;display:flex;flex-direction:column;gap:10px;justify-content:center;color:#b4c6cd}
+.net-panel-empty svg{color:var(--acc)}
+.net-panel-empty h4{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:20px;font-weight:500;color:#eef7f4}
+.net-panel-empty p{font-size:12.5px;line-height:1.6}
+.muted{color:#8aa2ab}.small{font-size:12px;line-height:1.6}
+.station-sheet{animation:reader-in .4s var(--ease) both}
+.station-sheet h4{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:22px;font-weight:500;margin:6px 0 12px;line-height:1.2}
+.station-sheet dl{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin:0 0 14px}
+.station-sheet dl div{min-width:0}
+.station-sheet dt{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7f99a3}
+.station-sheet dd{margin:2px 0 0;font-size:12.5px;color:#e1eef0}
+.station-sheet h5{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin:16px 0 8px}
+.sensor-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.sensor-list li{display:flex;justify-content:space-between;gap:10px;align-items:baseline;padding:7px 11px;border-radius:10px;background:#ffffff07;border:1px solid #ffffff0d;font-size:12.5px}
+.sensor-list small{font-size:10.5px;color:#93acb5;white-space:nowrap}
+.inline-link{display:inline-flex;align-items:center;gap:4px;color:var(--acc);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgb(var(--acc-rgb)/.35)}
+.inline-link:hover{text-decoration-color:var(--acc)}
+.series-loading{display:flex;align-items:center;gap:8px;color:#a9bcc4}
+.spin{animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.rain-series{display:grid;gap:6px}
+.rain-head{display:flex;justify-content:space-between;font-size:11.5px;color:#a9bcc4}
+.rain-head b{color:#e6f3ef}
+.rain-series>svg{width:100%;height:90px;background:#ffffff05;border-radius:8px}
+.rain-series rect{fill:#71c7f5}
+.rain-axis{display:flex;justify-content:space-between;font-size:10px;color:#7f99a3}
+/* Bibliothèque : liste de références, comme dans un document de recherche */
+.library-doc{display:grid;gap:22px}
+.library-group h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#93acb5;padding-bottom:8px;border-bottom:1px solid #b9d6e41c;margin-bottom:4px}
+.library-group ol{list-style:none;margin:0;padding:0}
+.library-group li{display:grid;grid-template-columns:42px minmax(0,1fr) auto 28px;gap:12px;align-items:baseline;padding:10px 4px;border-bottom:1px solid #b9d6e40f}
+.library-group li:hover{background:#ffffff05}
+.ref-n{font-size:12px;color:#7f99a3;font-variant-numeric:tabular-nums}
+.ref-main{font-size:13.5px;line-height:1.5;color:#dfecef}
+.ref-owner{color:#a9bcc4}
+.ref-main cite{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-style:italic;color:#f0f7f5}
+.ref-type{color:#7f99a3;font-size:12px}
+.ref-use{font-size:12px;line-height:1.55;color:#8fa6af;margin-top:2px}
+.ref-status{font-size:10px;font-weight:650;color:#a9bcc4;border:1px solid #a9bcc433;border-radius:999px;padding:2px 8px;white-space:nowrap}
+.ref-status.on{color:#bff0de;border-color:rgb(var(--acc-rgb)/.4)}
+.library-group li>a{color:#a5c6cc;align-self:center}
+.library-group li>a:hover{color:var(--acc)}
+.ref-local{font-size:10px;color:#6f8992;align-self:center}
+@media(max-width:860px){.data-hub{padding:18px}.net-body{grid-template-columns:1fr}.library-group li{grid-template-columns:30px minmax(0,1fr) 22px}.ref-status{display:none}.net-switch{display:flex;width:100%;overflow-x:auto}}
+
+/* ---------- V3.4 : barre caméra ---------- */
+.v2 .map-camera-tools.v3-camera{width:74px;padding:8px 6px 8px;gap:6px;border-radius:18px;background:#10212cdd;border-color:#a9d3d02e}
+.v3-camera .cam-rotate{display:flex;gap:4px}
+.v3-camera .cam-rotate button,.v3-camera>button.cam-north{width:30px;height:30px;border-radius:999px;display:grid;place-items:center;color:#cfe3e8;transition:background .2s,color .2s,box-shadow .25s}
+.v3-camera .cam-rotate button:hover,.v3-camera>button.cam-north:hover{background:rgb(var(--acc-rgb)/.12);color:#fff;box-shadow:0 0 0 1px rgb(var(--acc-rgb)/.3)}
+.v2 .v3-camera>input{width:76px;margin:30px -14px}
+.v3-camera>button.cam-north{position:relative;width:34px;height:34px}
+.v3-camera>button.cam-north small{position:absolute;top:-3px;right:-4px;font-size:9px;font-weight:700;color:var(--acc)}
+.v3-camera>button.cam-dim{width:auto;height:auto;display:flex;gap:2px;padding:3px;border-radius:999px;background:#0b1820;border:1px solid #a9d3d026}
+.v3-camera>button.cam-dim b{font-size:10.5px;font-weight:700;padding:4px 6px;border-radius:999px;color:#7f99a3;transition:background .25s,color .25s}
+.v3-camera>button.cam-dim b.on{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#0b1d24;box-shadow:0 0 14px -3px rgb(var(--acc-rgb)/.7)}
+@media(max-width:760px){.v2 .map-camera-tools.v3-camera{width:66px;padding:5px 4px}.v3-camera .cam-rotate button{width:27px;height:27px}}
+.source-list-doc{margin-top:14px}
+.ref-more{display:inline-flex;align-items:center;gap:4px;margin-top:5px;font-size:11px;color:var(--acc)}
+.ref-detail{color:#b4c6cd}
+.legend-dash{display:inline-block;width:16px;height:0;border-top:2px dashed #8fd8ff;margin-right:6px;vertical-align:middle}
+.context-source-list.source-list-doc{display:block}
+.context-source-list.source-list-doc p{margin:0}
+.context-source-list.source-list-doc .ref-main{font-size:13.5px;color:#dfecef}
+.context-source-list.source-list-doc .ref-use{font-size:12px;margin-top:2px;color:#8fa6af}
+.context-source-list.source-list-doc .ref-detail{margin-top:6px;color:#b4c6cd}
+.ref-local{white-space:nowrap}
+
+/* ---------- V3.5 ---------- */
+/* « Módulo pendiente » : petite étiquette, flèche collée à la tuile, détachée de la ligne */
+.pending-tip{left:50%;right:auto;width:auto;top:calc(100% + 5px);height:21px;line-height:21px;padding:0 10px;font-size:10.5px;font-weight:650;border-radius:999px;transform:translate(-50%,-2px)}
+.pending-tip::after{border-width:5px;margin-left:-5px;border-top:0}
+.inactive-risk:hover .pending-tip,.inactive-risk:focus-visible .pending-tip{transform:translate(-50%,0)}
+/* Bas de l'accueil : Manejo de datos carré à gauche, deux bandeaux à droite ; autre teinte (outils transversaux) */
+.v2 .home-v3 .home-tools-v4{display:grid;grid-template-columns:minmax(220px,.42fr) 1fr;grid-template-rows:auto auto;gap:12px;margin-top:34px;padding-top:24px}
+.v2 .home-v3 .home-tools-v4>button{position:relative;display:grid;grid-template-columns:40px 1fr 40px;align-items:center;min-height:62px;padding:12px 20px;margin:0;border-radius:var(--r-card);background:linear-gradient(160deg,#252b47d6,#181d33e8);border:1px solid #b6bff02a;box-shadow:inset 0 1px 0 #ffffff10;text-align:center;transition:background .25s,border-color .25s,box-shadow .3s var(--ease)}
+.v2 .home-v3 .home-tools-v4>button:hover{background:linear-gradient(160deg,#2f3760e6,#1e2542f0);border-color:#c3cbff70;box-shadow:inset 0 1px 0 #ffffff18,0 0 0 1px #b6bff040,0 18px 46px -20px #8f9cf099}
+.v2 .home-v3 .home-tools-v4>button strong{font-size:16px;font-weight:560;letter-spacing:-.01em;color:#eef0fb}
+.v2 .home-v3 .home-tools-v4>button>svg:first-child{justify-self:start;color:#b9c3f5;margin:0}
+.v2 .home-v3 .home-tools-v4>button>svg:last-child{justify-self:end;color:#aab3e0;margin:0;transition:transform .3s var(--ease),color .2s}
+.v2 .home-v3 .home-tools-v4>button:hover>svg:last-child{transform:translate(2px,-2px);color:#dfe4ff}
+.v2 .home-v3 .home-tools-v4>.tool-square{grid-row:1/3;grid-template-columns:1fr;grid-template-rows:1fr auto;justify-items:center;align-content:center;gap:12px;padding:18px}
+.v2 .home-v3 .home-tools-v4>.tool-square>svg:first-child{justify-self:center;width:34px;height:34px}
+.v2 .home-v3 .home-tools-v4>.tool-square strong{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:20px;font-weight:500}
+.v2 .home-v3 .home-tools-v4>.tool-square>svg:last-child{position:absolute;top:14px;right:16px}
+@media(max-width:760px){.v2 .home-v3 .home-tools-v4{grid-template-columns:1fr}.v2 .home-v3 .home-tools-v4>.tool-square{grid-row:auto;min-height:96px}}
+/* Manejo de datos : compact, deux volets dépliables */
+.data-modal.wide{width:1040px}
+.data-hub.data-hub-compact{padding:18px 26px 24px;gap:10px}
+.data-fold{border-radius:16px;border:1px solid #a9d3d020;background:#ffffff04;overflow:hidden}
+.data-fold-head{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:18px;font-weight:500;color:#eef7f4;transition:background .2s}
+.data-fold-head:hover{background:#ffffff07}
+.data-fold-head svg{color:var(--acc);transition:transform .3s var(--ease)}
+.data-fold.open .data-fold-head svg{transform:rotate(180deg)}
+.data-fold-body{padding:2px 18px 18px;animation:reader-in .35s var(--ease) both}
+.data-intro{font-size:12.5px;color:#a9bcc4;margin:0 0 12px}
+.data-hub-compact .net-switch{margin-bottom:10px}
+.data-hub-compact .net-switch button{padding:6px 13px;font-size:12.5px}
+.data-hub-compact .net-body{grid-template-columns:minmax(0,1fr) minmax(280px,1fr);gap:14px}
+.data-hub-compact .net-map{padding:10px 10px 8px}
+.data-hub-compact .net-map>svg{max-height:360px;margin:auto}
+.data-hub-compact .net-panel{padding:18px}
+.data-hub-compact .station-sheet h4{font-size:19px}
+/* Bibliothèque : liste brute, compacte, chaque ligne cliquable */
+.library-raw{list-style:none;margin:0;padding:0}
+.library-raw li{border-bottom:1px solid #b9d6e40f}
+.library-raw li>a,.library-raw li>div{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 6px;border-radius:10px;color:inherit;transition:background .15s}
+.library-raw li>a:hover{background:rgb(var(--acc-rgb)/.08)}
+.library-raw li>a:hover cite{color:var(--acc)}
+.library-raw .ref-n{font-size:11.5px;color:#7f99a3;text-align:center;font-variant-numeric:tabular-nums}
+.library-raw .ref-text{display:flex;flex-direction:column;gap:1px;min-width:0}
+.library-raw .ref-main{font-size:13px;line-height:1.4;color:#dfecef}
+.library-raw .ref-use{font-size:11.5px;line-height:1.4;color:#8199a2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.library-raw .ref-local{font-size:10.5px;color:#6f8992;font-style:italic;white-space:nowrap}
+.source-raw{margin-top:12px}
+.context-source-list.library-raw{display:block}.context-source-list.library-raw p{margin:0}
+/* Riesgos complementarios : deux listes en lignes (chapitres) + lecteur à droite */
+.v4-additional{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)!important}
+.risk-lists{display:grid;gap:18px;align-content:start}
+.risk-chapter h4{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#93acb5;margin:0 0 6px 4px}
+.risk-chapter ul{list-style:none;margin:0;padding:0;border-top:1px solid #b9d6e414}
+.risk-chapter li{border-bottom:1px solid #b9d6e414}
+.risk-row{width:100%;display:flex;align-items:center;gap:12px;padding:10px 10px;border-radius:10px;text-align:left;font-size:14px;font-weight:500;color:#d6e7ec;transition:background .2s,color .2s}
+.risk-row svg{color:var(--acc);flex-shrink:0;transition:transform .3s var(--ease)}
+.risk-row:hover,.risk-row.active{background:rgb(var(--acc-rgb)/.09);color:#fff}
+.risk-row.active{box-shadow:inset 3px 0 0 var(--acc)}
+.risk-row:hover svg,.risk-row.active svg{transform:scale(1.12)}
+.v4-additional .pill-reader{position:relative}
+.reader-chip{position:absolute;top:18px;right:18px;font-size:10.5px;color:#e2c27f;border:1px solid #e2c27f55;background:#e2c27f12;border-radius:999px;padding:3px 10px}
+.reader-body small.reader-chip{margin:0;align-self:auto}
+.v4-additional .pill-reader{top:0;align-self:stretch}
+
+/* ---------- V3.6 : espace carte réorganisé ---------- */
+/* Noms des quebradas : seulement au survol du bassin */
+.map-label.hover-only{visibility:hidden;pointer-events:none}
+.map-label.hover-only.show{visibility:visible;animation:label-in .25s var(--ease)}@keyframes label-in{from{filter:blur(3px);transform:translateY(3px)}}
+/* Colonne gauche : titre, Buscar cuenca (déroulant), puis Datos et Capas, repoussés quand la liste s'ouvre */
+.v2 .map-search-disclosure{top:76px;bottom:auto;left:24px;z-index:9;pointer-events:auto}
+.v2 .map-search-disclosure>button{gap:10px;padding:9px 15px;border:1px solid #a6c2cf30;border-bottom-color:#a6c2cf30;border-radius:999px;background:#12232ee0;backdrop-filter:blur(12px);font-size:12px;text-shadow:none;transition:border-color .2s,box-shadow .25s}
+.v2 .map-search-disclosure>button:hover,.v2 .map-search-disclosure.open>button{border-color:rgb(var(--acc-rgb)/.5);box-shadow:var(--glow)}
+.v2 .map-search-disclosure>button svg{transition:transform .3s var(--ease)}
+.v2 .map-search-disclosure.open>button svg{transform:rotate(180deg)}
+.v2 .map-search-list{position:static;margin-top:8px;height:250px;max-height:none;border-radius:16px;width:280px}
+.v2.is-workspace:has(.map-search-disclosure) .data-menu,.v2.is-workspace:has(.map-search-disclosure) .layers-menu{top:124px;transition:top .3s var(--ease)}
+.v2.is-workspace:has(.map-search-disclosure.open) .data-menu,.v2.is-workspace:has(.map-search-disclosure.open) .layers-menu{top:382px}
+/* Colonne droite : indication de manipulation, barre caméra, légende */
+.v2 .map-gesture-hint{top:78px;bottom:auto;left:auto;right:24px;transform:none;font-size:10.5px;text-align:right}
+.v2 .map-camera-tools.v3-camera,.v2.is-workspace:has(.panel) .map-camera-tools.v3-camera,.v2.is-workspace:has(.territory-summary) .map-camera-tools.v3-camera,.v2.is-workspace:has(.scenario-context) .map-camera-tools.v3-camera,.v2.is-workspace:has(.results-panel) .map-camera-tools.v3-camera{top:104px;bottom:auto;right:24px}
+.v2 .map-mini-legend{top:330px;bottom:auto;right:24px;flex-direction:column;align-items:flex-end;gap:7px;font-size:10.5px}
+.v2.is-workspace:has(.panel) .map-gesture-hint,.v2.is-workspace:has(.panel) .map-mini-legend,.v2.is-workspace:has(.panel) .map-camera-tools.v3-camera{right:372px}
+@media(max-width:760px){.v2 .map-search-disclosure{top:66px;left:16px}.v2 .map-mini-legend{top:auto;bottom:34px;flex-direction:row}.v2.is-workspace:has(.map-search-disclosure) .data-menu,.v2.is-workspace:has(.map-search-disclosure) .layers-menu{top:112px}}
+
+/* ---------- V3.7 ---------- */
+/* Barres de défilement : elles restent à l'intérieur des cadres arrondis (piste rognée en haut et en bas) */
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-thumb{background:#5d77844d;border-radius:999px;border:2px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background-color:#7d9aa780}
+::-webkit-scrollbar-track{background:transparent;margin-block:14px}
+.modal::-webkit-scrollbar-track{margin-top:24px;margin-bottom:24px}
+.v2 .data-dropdown::-webkit-scrollbar-track,.v2 .map-search-list::-webkit-scrollbar-track,.v2 .panel::-webkit-scrollbar-track{margin-block:16px}
+/* Volets de Manejo de datos : ouverture et fermeture en douceur */
+.data-fold-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.data-fold.open .data-fold-wrap{grid-template-rows:1fr}
+.data-fold-inner{min-height:0;overflow:hidden}
+.data-fold-wrap .data-fold-body{animation:none;opacity:0;transform:translateY(-6px);transition:opacity .35s ease,transform .45s var(--ease)}
+.data-fold.open .data-fold-wrap .data-fold-body{opacity:1;transform:none;transition-delay:.12s}
+.data-fold-wrap[aria-hidden="true"]{visibility:hidden;transition:grid-template-rows .55s var(--ease),visibility 0s .55s}
+.data-fold.open .data-fold-wrap{visibility:visible;transition:grid-template-rows .55s var(--ease)}
+/* Liste des réseaux à gauche, carte à droite */
+.net-layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:18px;align-items:start}
+.net-list{display:flex;flex-direction:column;gap:3px}
+.net-item{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;padding:8px 11px;border-radius:12px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.net-item-text{display:flex;flex-direction:column;min-width:0}
+.net-item strong{font-size:13px;font-weight:600;color:#e3eef1}
+.net-item small{font-size:10.5px;color:#839ba4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.net-item-count{font-size:11px;font-weight:700;color:#a9bcc4;background:#ffffff0c;border-radius:999px;padding:2px 8px;font-variant-numeric:tabular-nums}
+button.net-item:hover{background:#ffffff08}
+.net-item.active{background:rgb(var(--acc-rgb)/.1);border-color:rgb(var(--acc-rgb)/.35)}
+.net-item.active strong{color:#fff}.net-item.active .net-item-count{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#0b1d24}
+.net-unmapped{margin-top:12px;padding-top:10px;border-top:1px solid #b9d6e414}
+.net-unmapped h5{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7f99a3;margin:0 0 4px 11px}
+.net-item.ghost{opacity:.62;cursor:help}
+.net-stage-head{margin-bottom:10px}
+.net-stage-head h4{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:18px;font-weight:500;color:#eef7f4;margin:0 0 3px}
+.net-stage-head p{font-size:11.5px;color:#8fa6af;margin:0}
+.data-hub-compact .net-map{position:relative}
+.data-hub-compact .net-map>svg{max-height:400px}
+.net-card{position:absolute;left:10px;top:10px;width:min(300px,calc(100% - 20px));max-height:calc(100% - 20px);overflow:auto;background:#0f222bf7;border:1px solid rgb(var(--acc-rgb)/.3);border-radius:16px;padding:16px 16px 14px;box-shadow:0 18px 40px -14px #000e;animation:reader-in .35s var(--ease) both;z-index:5}
+.net-card-close{position:absolute;top:8px;right:8px;width:28px;height:28px}
+.net-card .station-sheet h4{font-size:17px;margin:4px 30px 10px 0}
+.net-card .station-sheet dl{gap:6px 12px;margin-bottom:8px}
+.data-hub-compact .net-map-foot{margin-top:8px}
+@media(max-width:860px){.net-layout{grid-template-columns:1fr}.net-list{flex-direction:row;flex-wrap:wrap}.net-unmapped{display:none}}
+
+/* ---------- V3.8 ---------- */
+/* Fenêtres : l'en-tête est fixe, seul le contenu défile (plus de rebond qui écrase la bande du haut) */
+.modal{display:flex;flex-direction:column;overflow:hidden!important}
+.modal>.modal-header{flex:none;position:relative;top:auto}
+.modal>.modal-body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.modal>.modal-body::-webkit-scrollbar-track{margin-top:6px;margin-bottom:22px}
+.scene-modal>.modal-body{display:contents}
+@media print{.modal{overflow:visible!important;display:block}.modal>.modal-body{overflow:visible}}
+/* Nom du bassin survolé : une pastille qui apparaît en douceur (l'animation porte sur le span intérieur :
+   MapLibre pilote déjà transform et opacity du marqueur, d'où le nom qui « tombait du ciel ») */
+.v2 .map-label.v2-label.hover-only{padding:0!important;text-shadow:none}
+.map-label.hover-only.show{animation:none}
+.map-label.hover-only>span{display:block;padding:6px 14px;border-radius:999px;background:#0f222be0;border:1px solid rgb(var(--acc-rgb)/.45);box-shadow:0 8px 22px -8px #000c,0 0 18px -6px rgb(var(--acc-rgb)/.5);backdrop-filter:blur(8px);font-size:13px;font-weight:600;color:#eef7f4}
+.map-label.hover-only.show>span{animation:pill-soft .4s var(--ease) both}
+@keyframes pill-soft{from{opacity:0;transform:translateY(4px) scale(.96)}to{opacity:1;transform:none}}
+
+/* Carte des stations : cadre paysage, district entier, zoom (2026-11-15) */
+.data-hub-compact .net-map>svg{width:100%;height:auto;max-height:none;aspect-ratio:1.7;touch-action:none;user-select:none}
+.net-map>svg.zoomed{cursor:grab}.net-map>svg.zoomed:active{cursor:grabbing}
+.net-localities path{vector-effect:non-scaling-stroke}
+.net-zoom{position:absolute;right:16px;top:16px;display:flex;flex-direction:column;gap:2px;padding:3px;border-radius:14px;background:#0c1a22d9;border:1px solid #a9d3d020;z-index:3}
+.net-zoom button{width:28px;height:28px;display:grid;place-items:center;border-radius:10px;color:#cfe3e8;transition:background .2s,color .2s}
+.net-zoom button:hover:not(:disabled){background:#ffffff14;color:#fff}.net-zoom button:disabled{opacity:.35;cursor:default}
+.net-zoom-hint{font-size:10.5px;color:#7f99a3}
+.net-item strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Espace carte : colonne gauche Buscar + Simular, Datos/Capas à droite (2026-11-15) */
+.v2 .map-left-stack{position:absolute;top:76px;left:24px;z-index:9;width:280px;display:flex;flex-direction:column;align-items:stretch;gap:8px;pointer-events:none}
+.v2 .map-left-stack>*{pointer-events:auto}
+.v2 .map-left-stack .map-search-disclosure{position:relative;inset:auto;width:100%;border:1px solid #a6c2cf30;border-radius:21px;background:#12232ee6;backdrop-filter:blur(12px);overflow:hidden;transition:border-color .3s,box-shadow .35s,border-radius .45s var(--ease)}
+.v2 .map-left-stack .map-search-disclosure:hover,.v2 .map-left-stack .map-search-disclosure.open{border-color:rgb(var(--acc-rgb)/.5);box-shadow:var(--glow)}
+.v2 .map-left-stack .map-search-disclosure.open{border-radius:18px}
+.v2 .map-left-stack .map-search-disclosure>button{width:100%;justify-content:space-between;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;padding:10px 16px}
+.v2 .map-left-stack .map-search-disclosure>button:hover{box-shadow:none}
+.map-search-fold{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.map-search-disclosure.open .map-search-fold{grid-template-rows:1fr}
+.map-search-inner{min-height:0;overflow:hidden}
+.v2 .map-left-stack .map-search-list{position:static;margin:0;width:100%;height:250px;border:0;border-top:1px solid #a6c2cf1f;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;opacity:0;transform:translateY(-6px);transition:opacity .45s var(--ease),transform .5s var(--ease)}
+.map-search-disclosure.open .map-search-list{opacity:1;transform:none;transition-delay:.08s}
+.map-simulate{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:10px 16px;border-radius:999px;font-size:12.5px;font-weight:650;color:#0b1d24;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 8px 22px -10px rgb(var(--acc-rgb)/.8);transition:box-shadow .3s,filter .3s}
+.map-simulate:hover{box-shadow:0 0 0 4px rgb(var(--acc-rgb)/.18),0 10px 26px -8px rgb(var(--acc-rgb)/.9)}
+.map-simulate.armed{animation:simulate-breathe 2.2s ease-in-out infinite}
+@keyframes simulate-breathe{0%,100%{box-shadow:0 0 0 3px rgb(var(--acc-rgb)/.15),0 8px 22px -10px rgb(var(--acc-rgb)/.8)}50%{box-shadow:0 0 0 7px rgb(var(--acc-rgb)/.07),0 10px 28px -8px rgb(var(--acc-rgb)/.95)}}
+.map-simulate-hint{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;font-size:12px;color:#e8f4f2;background:#0f222bf0;border:1px solid rgb(var(--acc-rgb)/.45);box-shadow:0 10px 24px -12px #000d;animation:pill-in .3s var(--ease) both}
+.map-simulate-hint svg{color:var(--acc);animation:hint-tap 1.4s ease-in-out infinite}
+@keyframes hint-tap{0%,100%{transform:none}50%{transform:translate(1px,2px) scale(.9)}}
+.v2.is-workspace .data-menu,.v2.is-workspace .layers-menu,.v2.is-workspace:has(.map-search-disclosure) .data-menu,.v2.is-workspace:has(.map-search-disclosure) .layers-menu,.v2.is-workspace:has(.map-search-disclosure.open) .data-menu,.v2.is-workspace:has(.map-search-disclosure.open) .layers-menu{top:72px;left:auto;transition:none}
+.v2.is-workspace .data-menu{right:24px}.v2.is-workspace .layers-menu{right:var(--layers-right,142px)}
+.v2.is-workspace .data-dropdown,.v2.is-workspace .map-dropdown{left:auto;right:0}
+.v2.is-workspace .map-gesture-hint{top:124px!important}
+.v2.is-workspace .map-camera-tools.v3-camera{top:148px!important}
+.v2.is-workspace:has(.panel) .data-menu{right:372px}.v2.is-workspace:has(.panel) .layers-menu{right:calc(348px + var(--layers-right,142px))}
+@media(min-width:761px){.v2.is-workspace .map-mini-legend{top:384px}}
+
+/* Barre de l'espace risque : trois pastilles au lieu du menu déroulant (2026-11-15) */
+.v2 .risk-pills{display:flex;gap:6px;pointer-events:auto;padding:4px;border-radius:999px;background:#0e1d27c7;border:1px solid #a9d3d024;backdrop-filter:blur(12px)}
+.v2 .risk-pills button{--pill-color:var(--acc);padding:7px 15px;border-radius:999px;font-size:12.5px;font-weight:550;color:#b7c9d0;white-space:nowrap;transition:background .3s,color .3s,box-shadow .3s}
+.v2 .risk-pills button:hover{color:#fff;background:#ffffff0d;box-shadow:0 0 0 1px color-mix(in srgb,var(--pill-color) 45%,transparent),0 0 18px -4px color-mix(in srgb,var(--pill-color) 60%,transparent)}
+.v2 .risk-pills button.active{color:#0b1d24;background:var(--pill-color);box-shadow:0 0 18px -4px var(--pill-color)}
+@media(max-width:760px){.v2 .risk-pills{overflow-x:auto;scrollbar-width:none}.v2 .risk-pills button{padding:6px 11px;font-size:11.5px}}
+
+/* Retour à l'accueil : les éléments reviennent un à un */
+@keyframes home-back{from{opacity:0;transform:translateY(18px) scale(.985);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@keyframes home-back-head{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+.home-return .home-header{animation:home-back-head .7s var(--ease) both}
+.home-return .risk-grid>*,.home-return .secondary-risk-grid>*,.home-return .home-tools>*,.home-return .home-footer{animation:home-back .75s var(--ease) both}
+.home-return .risk-grid>:nth-child(1){animation-delay:.12s}.home-return .risk-grid>:nth-child(2){animation-delay:.2s}.home-return .risk-grid>:nth-child(3){animation-delay:.28s}
+.home-return .secondary-risk-grid>*{animation-delay:.42s}
+.home-return .secondary-risk-grid>:nth-child(2){animation-delay:.46s}.home-return .secondary-risk-grid>:nth-child(3){animation-delay:.5s}.home-return .secondary-risk-grid>:nth-child(4){animation-delay:.54s}.home-return .secondary-risk-grid>:nth-child(5){animation-delay:.58s}.home-return .secondary-risk-grid>:nth-child(n+6){animation-delay:.62s}
+.home-return .home-tools>:nth-child(1){animation-delay:.66s}.home-return .home-tools>:nth-child(2){animation-delay:.74s}.home-return .home-tools>:nth-child(3){animation-delay:.82s}
+.home-return .home-footer{animation-delay:.95s}
+@media(prefers-reduced-motion:reduce){.home-return *{animation:none!important}}
+@keyframes home-back-f{from{transform:translateY(18px) scale(.985);filter:opacity(0) blur(4px)}to{transform:none;filter:opacity(1) blur(0)}}
+.app.v2.home-return .secondary-risk-grid>.add-risk{animation:home-back-f .75s var(--ease) .62s both}
+
+/* Territorio seleccionado émerge de « Simular un evento » (colonne gauche) */
+.map-label.hover-only.pinned{visibility:visible;pointer-events:auto}
+.map-simulate-wrap{display:flex;flex-direction:column;border-radius:21px;transition:background .45s var(--ease),box-shadow .45s var(--ease)}
+.map-simulate-wrap.open{background:#10212ef2;border:1px solid rgb(var(--acc-rgb)/.35);box-shadow:0 18px 40px -16px #000d;backdrop-filter:blur(14px)}
+.map-simulate-wrap.open .map-simulate{cursor:default}
+.v2 .map-left-stack .map-simulate-wrap .territory-summary{position:static;inset:auto;width:100%;margin:0;padding:16px 18px 18px;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;max-height:calc(100svh - 250px);overflow:auto;animation:none}
+.map-simulate-wrap .map-search-fold .territory-summary{opacity:0;transform:translateY(-6px);transition:opacity .45s var(--ease),transform .5s var(--ease)}
+.map-simulate-wrap.open .map-search-fold .territory-summary{opacity:1;transform:none;transition-delay:.1s}
+.map-simulate-wrap.open .map-search-fold{grid-template-rows:1fr}
+.v2.is-workspace:has(.map-left-stack .territory-summary) .map-gesture-hint,.v2.is-workspace:has(.map-left-stack .territory-summary) .map-mini-legend,.v2.is-workspace:has(.map-left-stack .territory-summary) .map-camera-tools.v3-camera{right:24px!important}
+.v2.is-workspace:has(.map-left-stack .territory-summary) .data-menu{right:24px}.v2.is-workspace:has(.map-left-stack .territory-summary) .layers-menu{right:var(--layers-right,142px)}
+@media(max-width:760px){.v2 .map-left-stack .map-simulate-wrap .territory-summary{position:fixed;left:14px;right:14px;bottom:65px;width:auto;max-height:43svh;border-radius:16px;background:#10212ef5}}
+@media(max-width:760px){.map-simulate-wrap.open{backdrop-filter:none;background:none;border-color:transparent;box-shadow:none}.map-simulate-wrap .map-search-fold .territory-summary,.map-simulate-wrap.open .map-search-fold .territory-summary{transform:none}}
+
+/* Fiche de la quebrada : encadré sous le menu au nom de la cuenca, « Simular un evento » en bas */
+.v2 .map-left-stack .map-search-disclosure>button.has-name{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:16px;font-weight:500;color:#f1f8f6;padding:11px 16px 11px 18px}
+.map-territory-fold{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.map-territory-fold.open{grid-template-rows:1fr}
+.v2 .map-left-stack .map-territory-fold .territory-summary{position:static;inset:auto;width:100%;margin:0;padding:16px 16px 14px;border:1px solid rgb(var(--acc-rgb)/.3);border-radius:20px;background:#10212ef2;box-shadow:0 18px 40px -16px #000d;max-height:calc(100svh - 220px);overflow:auto;animation:none;opacity:0;transform:translateY(-8px);transition:opacity .45s var(--ease),transform .5s var(--ease)}
+.v2 .map-left-stack .map-territory-fold.open .territory-summary{opacity:1;transform:none;transition-delay:.1s}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 12px;margin-bottom:12px}
+.summary-grid>div{display:grid;grid-template-columns:auto 1fr;column-gap:7px;align-items:center}
+.summary-grid svg{color:var(--acc);opacity:.85}
+.summary-grid strong{font-size:18px;font-weight:550;color:#eef7f4;font-variant-numeric:tabular-nums;white-space:nowrap}
+.summary-grid span{grid-column:1/-1;font-size:10.5px;color:#8fa6af;margin-top:2px}
+.summary-foot{display:flex;align-items:center;gap:8px;margin:10px 0 12px}
+.summary-foot small{font-size:10px;color:#7f99a3}
+@media(max-width:760px){.v2 .map-left-stack .map-territory-fold .territory-summary{position:fixed;left:14px;right:14px;bottom:65px;width:auto;max-height:43svh;backdrop-filter:none;transform:none}}
+
+/* Fiche station concise (Manejo de datos) */
+.net-card{padding:12px 14px 14px}
+.station-sheet.compact>header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.v2 .station-sheet.compact .net-card-close{position:static;width:26px;height:26px;flex:none;display:grid;place-items:center;border-radius:999px;color:#a9bcc4;background:#ffffff0a;transition:background .2s,color .2s}
+.v2 .station-sheet.compact .net-card-close:hover{background:#ffffff1a;color:#fff}
+.net-card .station-sheet.compact h4{margin:6px 0 2px;font-size:16px}
+.station-meta{font-size:11px;color:#8fa6af;margin:0 0 9px}
+.sensor-chips{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0 0 10px;padding:0}
+.sensor-chips li{font-size:10.5px;padding:3px 8px;border-radius:999px;background:rgb(var(--acc-rgb)/.1);color:#cfe7e2;border:1px solid rgb(var(--acc-rgb)/.2)}
+
+/* Ouverture / fermeture des fenêtres avec titre volant */
+.title-typed{color:inherit}
+.title-caret{display:inline-block;width:2px;height:.9em;margin-left:2px;vertical-align:-.08em;background:var(--acc);animation:caret-blink .7s steps(1) infinite}
+@keyframes caret-blink{50%{opacity:0}}
+.modal-backdrop.closing{animation:backdrop-out .5s var(--ease) forwards}
+.modal.closing{animation:modal-out .42s var(--ease) forwards}
+.modal.closing .modal-header h2{visibility:hidden}
+@keyframes backdrop-out{to{opacity:0;backdrop-filter:blur(0)}}
+@keyframes modal-out{to{opacity:0;transform:translateY(10px) scale(.985)}}
+.modal.has-origin:not(.closing){animation:modal-fade-in .45s var(--ease) both}
+@keyframes modal-fade-in{from{opacity:0}to{opacity:1}}
+
+/* Climatología en volets */
+.climate-approach{font-size:13px;line-height:1.6;color:#b9cbd1;max-width:860px;margin:2px 0 18px}
+.climate-approach b{color:#eef7f4;font-weight:600}
+.risk-impacts{margin-top:26px}
+.risk-impacts>h4{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:18px;font-weight:500;color:#eef7f4;margin:0 0 12px}
+.risk-impacts .adaptation-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.risk-impacts .adaptation-mark{background:var(--risk-color)!important}
+.impact-signal{color:#cfe0e4!important}
+.climate-chain{font-size:11.5px;color:#8fa6af;margin-top:14px}
+@media(max-width:860px){.risk-impacts .adaptation-grid{grid-template-columns:1fr}}
+/* Cuenca choisie : petite croix dans la pastille ; scénario et résultats dans la colonne gauche */
+.v2 .map-left-stack{width:320px}
+.map-search-disclosure.has-territory>button:not(.map-clear-territory){padding-right:66px!important}
+.v2 .map-left-stack .map-clear-territory{position:absolute;right:38px;top:9px;z-index:2;width:26px;height:26px;display:grid;place-items:center;border-radius:999px;color:#a9bcc4;background:#ffffff0d;transition:background .2s,color .2s,box-shadow .25s}
+.v2 .map-left-stack .map-clear-territory:hover{background:#ffffff1c;color:#fff;box-shadow:0 0 0 1px rgb(var(--acc-rgb)/.35)}
+.map-panel-swap{animation:panel-swap .5s var(--ease) both}
+@keyframes panel-swap{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.v2 .map-left-stack .map-territory-fold .scenario-context{position:static;inset:auto;width:100%;margin:0;display:block}
+.v2 .map-left-stack .map-territory-fold .scenario-panel,.v2 .map-left-stack .map-territory-fold .results-panel{position:static;inset:auto;width:100%;margin:0;padding:18px;border:1px solid rgb(var(--acc-rgb)/.3);border-radius:20px;background:#10212ef2;box-shadow:0 18px 40px -16px #000d;max-height:calc(100svh - 200px);overflow:auto;animation:none;opacity:1;transform:none}
+.v2.is-workspace:has(.map-left-stack .panel) .map-gesture-hint,.v2.is-workspace:has(.map-left-stack .panel) .map-mini-legend,.v2.is-workspace:has(.map-left-stack .panel) .map-camera-tools.v3-camera{right:24px!important}
+.v2.is-workspace:has(.map-left-stack .panel) .data-menu{right:24px}.v2.is-workspace:has(.map-left-stack .panel) .layers-menu{right:var(--layers-right,142px)}
+@media(max-width:760px){.v2 .map-left-stack{width:min(320px,calc(100vw - 32px))}.v2 .map-left-stack .map-territory-fold .scenario-panel,.v2 .map-left-stack .map-territory-fold .results-panel{position:fixed;left:14px;right:14px;bottom:65px;width:auto;max-height:45svh}.map-panel-swap{animation:none}}
+.v2 .map-left-stack .map-search-disclosure>button.map-clear-territory{position:absolute;right:38px;top:9px;width:26px!important;height:26px;padding:0!important;justify-content:center;border-radius:999px!important;background:#ffffff0d!important}
+.v2 .map-left-stack .map-search-disclosure>button.map-clear-territory:hover{background:#ffffff1c!important;color:#fff}
+@media(min-width:761px){.v2.is-workspace .playback{left:calc(50% + 180px)!important}}
+/* Modelo de índices : grande matrice claire, risques dépliables */
+.mr-v4 .mr-matrix{margin:4px 0 22px}
+.mr-v4 .matrix-container{max-width:none}
+.mr-v4 .risk-matrix{gap:6px}
+.mr-v4 .matrix-cell{min-height:0;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:6px;transition:outline-color .2s}
+.mr-v4 .matrix-cell.low{background:#7fe0c033}.mr-v4 .matrix-cell.moderate{background:#d9e48a38}.mr-v4 .matrix-cell.elevated{background:#ffd27a40}.mr-v4 .matrix-cell.high{background:#ffaa7f48}.mr-v4 .matrix-cell.critical{background:#ff858552}
+.mr-v4 .matrix-cell.chosen{outline:2px solid #ffffffb0;outline-offset:-2px}
+.mr-v4 .matrix-cell button{width:30px;height:30px;border-radius:999px;font-weight:700;font-size:13px;color:#0b1d24;background:var(--risk-color);box-shadow:0 0 0 3px #0b1d2455;transition:transform .2s,box-shadow .25s}
+.mr-v4 .matrix-cell button.selected{box-shadow:0 0 0 3px #fff,0 0 18px -2px var(--risk-color)}
+.mr-v4 .matrix-key .dot.green{background:#7fe0c0}.mr-v4 .matrix-key .dot.yellow{background:#e6ec8f}.mr-v4 .matrix-key .dot.orange{background:#ffb48a}.mr-v4 .matrix-key .dot.red{background:#ff8f8f}
+.mr-risks{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.mr-risk{position:relative;border:1px solid #a9d3d01f;border-radius:16px;background:#ffffff05;transition:border-color .25s,background .25s}
+.mr-risk.active{border-color:color-mix(in srgb,var(--risk-color) 55%,transparent);background:color-mix(in srgb,var(--risk-color) 7%,transparent)}
+.mr-risk-head{width:100%;display:flex;align-items:center;gap:12px;padding:12px 16px;text-align:left}
+.mr-risk-head strong{flex:1;font-size:14px;font-weight:600;color:#eef7f4}
+.mr-num{width:26px;height:26px;border-radius:999px;display:grid;place-items:center;font-size:12px;font-weight:700;color:#0b1d24;background:var(--risk-color,#a9bcc4)}
+.mr-add .mr-num{background:#ffffff14;color:#cfe3e8}
+.gp-tag{font-size:11px;font-weight:600;color:#cfe3e8;padding:3px 9px;border-radius:999px;border:1px solid #a9d3d02e;font-variant-numeric:tabular-nums}
+.mr-risk-head svg:last-child{color:#8fa6af;transition:transform .35s var(--ease)}
+.mr-risk.open .mr-risk-head svg:last-child{transform:rotate(180deg)}
+.mr-risk .data-fold-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.mr-risk.open .data-fold-wrap{grid-template-rows:1fr}
+.mr-criteria{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;padding:4px 18px 16px}
+.mr-criteria label{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#b9cbd1}
+.mr-criteria label>span{display:flex;align-items:center;gap:7px}.mr-criteria label strong{margin-left:auto;color:#eef7f4}
+.mr-criteria .probability-control{grid-column:1/-1}
+.mr-add .pending-tip{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);opacity:0;pointer-events:none;transition:opacity .15s}
+.mr-add:hover .pending-tip,.mr-add:focus-within .pending-tip{opacity:1}
+.mr-add{border-style:dashed}
+@media(max-width:760px){.mr-criteria{grid-template-columns:1fr}.mr-v4 .risk-matrix{grid-template-rows:repeat(5,44px)}}
+.mr-v4 .risk-matrix{grid-template-rows:repeat(5,60px)}
+.mr-v4 .matrix-container{padding:6px 0 40px 92px}
+.mr-v4 .matrix-y-labels{top:6px;bottom:40px;left:22px;width:62px;font-size:11px;color:#a9bcc4}
+.mr-v4 .matrix-x-labels{font-size:11px;color:#a9bcc4}
+.mr-v4 .y-axis,.mr-v4 .x-axis{font-size:9.5px;letter-spacing:.12em;color:#7f99a3}
+.mr-v4 .matrix-cell.low{background:linear-gradient(160deg,#6fdcbc66,#4fbfa055)}.mr-v4 .matrix-cell.moderate{background:linear-gradient(160deg,#d4e88a66,#b9d26b55)}.mr-v4 .matrix-cell.elevated{background:linear-gradient(160deg,#ffd77d70,#f2bf5c5c)}.mr-v4 .matrix-cell.high{background:linear-gradient(160deg,#ffb08a78,#f3946866)}.mr-v4 .matrix-cell.critical{background:linear-gradient(160deg,#ff8a9480,#ec6b7870)}
+.mr-v4 .matrix-cell.low{background:linear-gradient(160deg,#79e2c4d9,#5cc9a9c7)}.mr-v4 .matrix-cell.moderate{background:linear-gradient(160deg,#cdeb9ad9,#b3dc7dc7)}.mr-v4 .matrix-cell.elevated{background:linear-gradient(160deg,#ffe08fd9,#fcd06fc7)}.mr-v4 .matrix-cell.high{background:linear-gradient(160deg,#ffbf9bd9,#fba67fc7)}.mr-v4 .matrix-cell.critical{background:linear-gradient(160deg,#ff9aa5d9,#f57f8dc7)}
+.mr-v4 .matrix-cell.chosen{outline:2px solid #0b1d24;outline-offset:-4px}
+.mr-v4 .matrix-cell button{box-shadow:0 0 0 3px #ffffffcc}
+.mr-v4 .matrix-cell button.selected{box-shadow:0 0 0 3px #0b1d24,0 0 0 5px #fff}
+/* Pastille de la cuenca : même police ouverte ou fermée ; la croix s'insère sans déplacer la flèche */
+.v2 .map-left-stack .map-search-disclosure>button.has-name{font-family:inherit;font-variation-settings:normal;font-size:12.5px;font-weight:600;color:#eef7f4;padding:10px 16px}
+.v2 .map-left-stack .map-search-disclosure>button:not(.map-clear-territory){position:relative;padding-right:44px!important;justify-content:flex-start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v2 .map-left-stack .map-search-disclosure.has-territory>button:not(.map-clear-territory){padding-right:76px!important}
+.v2 .map-left-stack .map-search-disclosure>button:not(.map-clear-territory)>svg{position:absolute;right:16px;top:50%;margin-top:-6.5px}
+.v2 .map-left-stack .map-search-disclosure>button.map-clear-territory{top:7px;right:36px;animation:clear-in .35s var(--ease) both}
+@keyframes clear-in{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+/* Stations : pastille fine dans la fiche, bouton Mostrar */
+.station-pill{display:flex;align-items:center;gap:8px;margin:2px 0 4px;padding:6px 6px 6px 12px;border:1px solid #a9d3d02e;border-radius:999px;font-size:12px;color:#cfe3e8}
+.station-pill>svg{color:var(--acc);flex:none}.station-pill>span{flex:1;white-space:nowrap}
+.station-pill>b{font-size:12px;font-weight:700;color:#eef7f4;font-variant-numeric:tabular-nums}
+.station-pill>button{font-size:11px;font-weight:600;padding:5px 11px;border-radius:999px;color:#cfe3e8;background:#ffffff0d;transition:background .2s,color .2s,box-shadow .25s}
+.station-pill>button:hover{background:#ffffff1a;color:#fff}
+.station-pill>button.on{color:#0b1d24;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 0 14px -4px rgb(var(--acc-rgb)/.7)}
+/* Panneau « Simular una lluvia » compact */
+.tr-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:4px 0 8px}
+.tr-grid button{display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 2px;border-radius:12px;border:1px solid #a9d3d024;font-size:13px;font-weight:650;color:#dbe9ec;transition:background .2s,border-color .2s,box-shadow .25s}
+.tr-grid button small{font-size:9px;font-weight:500;color:#8fa6af}
+.tr-grid button:hover{border-color:rgb(var(--acc-rgb)/.45)}
+.tr-grid button.active{background:rgb(var(--acc-rgb)/.16);border-color:rgb(var(--acc-rgb)/.6);box-shadow:0 0 14px -6px rgb(var(--acc-rgb)/.8);color:#fff}
+.tr-explain{font-size:10.5px;line-height:1.45;color:#8fa6af;margin:0 0 6px}
+.v2 .map-left-stack .scenario-panel .idf-chart{margin:4px 0 2px}
+.v2 .map-left-stack .scenario-panel .slider-field{margin:8px 0}
+.v2 .map-left-stack .scenario-panel .rain-readout{margin:6px 0 10px;padding:8px 0}
+.v2 .map-left-stack .scenario-panel h2{font-size:20px;margin:0}
+.v2 .map-left-stack .scenario-panel .floating-panel-head{margin-bottom:8px}
+.v2 .map-left-stack .scenario-panel .scenario-footer{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:10.5px;color:#8fa6af}
+.v2 .map-left-stack .map-territory-fold .scenario-panel{padding:14px 16px;max-height:calc(100svh - 150px)}
+/* Barre de temps fine et longue */
+.v2.is-workspace .playback{padding:8px 16px 8px 8px;width:min(720px,calc(100vw - 420px));border-radius:999px;gap:12px}
+.playback-main.slim{display:flex;align-items:center;gap:14px;flex:1}
+.playback-main.slim .timeline{flex:1;display:flex;align-items:center}
+.playback-main.slim input{width:100%}
+.playback-time{font-size:13px;font-weight:650;color:#eef7f4;white-space:nowrap;font-variant-numeric:tabular-nums}
+.playback-time small{font-weight:500;color:#8fa6af}
+/* Bulle de station : émerge du point, s'y résorbe */
+.net-tip{animation:tip-in .26s var(--ease) both!important;transform-origin:50% calc(100% + 22px)}
+.net-tip.out{animation:tip-out .2s ease-in both!important}
+@keyframes tip-in{from{opacity:0;scale:.15}to{opacity:1;scale:1}}
+@keyframes tip-out{from{opacity:1;scale:1}to{opacity:0;scale:.15}}
+/* Paragraphes d'introduction en pleine largeur */
+.climate-approach{max-width:none;text-align:justify;hyphens:auto}
+/* Modelo de índices : couleurs franches, légende en haut, axes lisibles */
+.mr-v4 .matrix-cell.low{background:linear-gradient(160deg,#3fd29ef2,#2fb986e6)}.mr-v4 .matrix-cell.moderate{background:linear-gradient(160deg,#b5dc55f2,#9cc63fe6)}.mr-v4 .matrix-cell.elevated{background:linear-gradient(160deg,#ffc247f2,#f2a92ce6)}.mr-v4 .matrix-cell.high{background:linear-gradient(160deg,#ff8b4af2,#ec6f2ee6)}.mr-v4 .matrix-cell.critical{background:linear-gradient(160deg,#f2545bf2,#d93a44e6)}
+.mr-v4 .matrix-key.mr-key{justify-content:flex-start;gap:16px;margin:0 0 12px 92px;font-size:12px;color:#cfe3e8}
+.mr-key-title{font-weight:700;color:#eef7f4}
+.mr-v4 .matrix-key .dot.green{background:#3fd29e}.mr-v4 .matrix-key .dot.yellow{background:#b5dc55}.mr-v4 .matrix-key .dot.orange{background:#ffc247}.mr-v4 .matrix-key .dot.red{background:#f2545b}
+.mr-v4 .y-axis,.mr-v4 .x-axis{font-size:12px;font-weight:700;letter-spacing:.1em;color:#dbe9ec}
+.mr-v4 .matrix-y-labels,.mr-v4 .matrix-x-labels{font-size:12px;font-weight:600;color:#cfe3e8}
+.mr-v4 .matrix-cell button{width:auto;height:auto;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;font-size:11.5px;font-weight:650;color:#0b1d24;background:#ffffffe6;box-shadow:0 2px 8px -2px #0006}
+.mr-v4 .matrix-cell button b{width:20px;height:20px;border-radius:999px;display:grid;place-items:center;font-size:11px;background:var(--risk-color);color:#0b1d24}
+.mr-v4 .matrix-cell button.selected{box-shadow:0 0 0 2px #0b1d24,0 4px 14px -2px #000a}
+.mr-v4 .matrix-cell{flex-wrap:wrap;padding:4px}
+.mr-risk.open .mr-risk-head{border-bottom:1px solid #a9d3d02e}
+.mr-risk.open .mr-criteria{padding-top:14px}
+/* Fuentes réduites */
+.context-sources.few{max-width:760px}
+.mr-v4 .matrix-key.mr-key span{font-size:12.5px;display:inline-flex;align-items:center;gap:6px}.mr-v4 .matrix-key.mr-key .dot{width:10px;height:10px;border-radius:3px}
+.live-series{display:flex;flex-direction:column;gap:8px}
+.live-row{display:grid;grid-template-columns:1fr 110px;align-items:center;gap:10px;color:var(--acc)}
+.live-row span{display:block;font-size:10.5px;color:#8fa6af}.live-row strong{font-size:15px;color:#eef7f4}.live-row strong small{font-size:10px;color:#8fa6af}
+.live-row svg{width:110px;height:26px}
+.dem-list .library-raw a{display:flex;gap:12px}.dem-list em{display:block;font-size:11px;color:#a9bcc4;font-style:normal;margin-top:2px}
+.spin{animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+/* Invite « Haz clic sobre una cuenca » : pastille jaune comme « Módulo pendiente » */
+.map-simulate.armed{animation:none}
+.v2 .map-left-stack .map-simulate-hint{align-self:flex-start;gap:6px;padding:6px 12px;font-size:11px;font-weight:600;letter-spacing:.02em;color:#10222a;background:linear-gradient(135deg,#f1dca6,#e2bf79);border:0;box-shadow:0 6px 18px -8px #000c;opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .25s var(--ease);animation:none;pointer-events:none}
+.v2 .map-left-stack .map-simulate-hint svg{color:#10222a;animation:none}
+.map-simulate:hover+.map-simulate-hint,.v2 .map-left-stack .map-simulate-hint.show{opacity:1;transform:none}
+.sim-fly{position:fixed!important;z-index:3000;pointer-events:none;margin:0!important;box-sizing:border-box}
+.sim-fly-label{white-space:nowrap}
+/* Barre du temps : curseur centré, plus gros */
+.playback-main.slim input[type=range]{-webkit-appearance:none;appearance:none;height:8px;border-radius:999px;background:linear-gradient(90deg,var(--acc) var(--fill,0%),#ffffff22 var(--fill,0%));margin:0;cursor:pointer}
+.playback-main.slim input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:999px;background:transparent}
+.playback-main.slim input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-7px;border-radius:999px;background:#fff;border:3px solid var(--acc);box-shadow:0 2px 10px #0008}
+.playback-main.slim input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:999px;background:#fff;border:3px solid var(--acc)}
+.v2.is-workspace .playback{padding:10px 18px 10px 10px}
+.playback-main.slim .rain-bars{display:none}
+/* Les volets poussent vers le bas : fenêtres ancrées en haut au lieu d'être centrées */
+.modal-backdrop:has(.modal.wide){align-items:flex-start;padding-top:40px}
+/* Matrice : pastilles non cliquables, alignées à gauche, sans numéro */
+.mr-v4 .matrix-cell{justify-content:flex-start;align-content:center;padding:4px 8px}
+.mr-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 6px;border-radius:999px;font-size:11.5px;font-weight:650;color:#0b1d24;background:#ffffffe6;box-shadow:0 2px 8px -2px #0006;white-space:nowrap}
+.mr-chip i{width:10px;height:10px;border-radius:999px;background:var(--risk-color);box-shadow:0 0 0 1.5px #0b1d2440}
+.mr-num{width:12px;height:12px}
+/* « ? » plus compact, tient dans une seule fenêtre */
+.intent-modal .modal-header{padding-top:14px;padding-bottom:12px}
+.intent-modal .modal-header h2{font-size:21px}
+.intent-modal .modal-subtitle{font-size:11px;margin-top:2px}
+.intent-modal .method-content{padding:16px 26px 20px}
+.intent-modal .method-lead{font-size:15.5px;line-height:1.45;margin-bottom:12px}
+.intent-modal .method-step{margin-top:12px;gap:12px}
+.intent-modal .method-step p{font-size:12.5px;line-height:1.5;margin:0}
+.intent-modal .method-step h3,.intent-modal .method-step h4,.intent-modal .method-step strong{font-size:13.5px;margin:0 0 2px}
+/* Curseur centré dans la barre de lecture */
+.playback-main.slim .timeline{height:24px;padding:0;margin:0}
+.playback-main.slim .timeline input{position:static;bottom:auto;height:8px;margin:0}
+.v2.is-workspace .playback{align-items:center}
+/* Invite « Haz clic sobre una cuenca » : comme une pensée, en bas à droite du bouton */
+.v2 .map-left-stack .map-simulate-hint{align-self:flex-end;margin:-2px 6px 0 0;opacity:0;background:linear-gradient(135deg,#f1dca6d9,#e2bf79cc);backdrop-filter:blur(6px)}
+.map-simulate:hover+.map-simulate-hint,.v2 .map-left-stack .map-simulate-hint.show{opacity:.92}
+/* « Mis escenarios » : pastille déroulante à droite des risques */
+.saved-menu{position:relative;margin-left:4px;padding-left:8px;border-left:1px solid #a9d3d024}
+.v2 .risk-pills .saved-pill{display:inline-flex;align-items:center;gap:7px}
+.saved-pill svg:last-child{transition:transform .3s var(--ease)}.saved-menu.open .saved-pill svg:last-child{transform:rotate(180deg)}
+.saved-menu.open .saved-pill{color:#fff;background:#ffffff12}
+.saved-drop{position:absolute;top:calc(100% + 10px);right:0;width:300px;display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);z-index:20}
+.saved-menu.open .saved-drop{grid-template-rows:1fr}
+.saved-drop-inner{min-height:0;overflow:hidden;border-radius:18px;background:#10212ef5;border:1px solid transparent;box-shadow:0 18px 40px -16px #000d;transition:border-color .3s}
+.saved-menu.open .saved-drop-inner{border-color:rgb(var(--acc-rgb)/.3)}
+.saved-empty{margin:0;padding:14px 16px;font-size:12px;color:#a9bcc4}
+.saved-drop .saved-list{display:flex;flex-direction:column;gap:2px;padding:6px;max-height:50svh;overflow:auto}
+.saved-drop .saved-list article{display:flex;align-items:center;gap:4px}
+.saved-drop .saved-list article>button:first-child{flex:1;display:flex;align-items:center;gap:8px;text-align:left;padding:8px 10px;border-radius:12px}
+.saved-drop .saved-list article>button:first-child:hover{background:#ffffff0a}
+.saved-drop .saved-list strong{display:block;font-size:12.5px;color:#eef7f4}.saved-drop .saved-list small,.saved-drop .saved-list span{display:block;font-size:10.5px;color:#8fa6af}
+/* Coin haut droit réorganisé : indication tout en haut, puis Capas/Datos, puis la caméra */
+.v2.is-workspace .map-gesture-hint{top:28px!important;right:24px!important}
+.v2.is-workspace .map-camera-tools.v3-camera{top:124px!important}
+@media(min-width:761px){.v2.is-workspace .map-mini-legend{top:360px}}
+/* « Mis escenarios » : pastille grise indépendante, assez longue pour la liste */
+.v2 .risk-topbar .saved-menu{margin-left:14px;padding-left:0;border-left:0;pointer-events:auto;width:270px}
+.v2 .risk-topbar .saved-pill{width:100%;display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:550;color:#d5dde1;background:#2b3238d9;border:1px solid #ffffff1f;backdrop-filter:blur(12px);transition:background .2s,border-color .2s,color .2s}
+.v2 .risk-topbar .saved-pill svg:last-child{margin-left:auto}
+.v2 .risk-topbar .saved-pill:hover,.v2 .risk-topbar .saved-menu.open .saved-pill{background:#353d44e6;border-color:#ffffff33;color:#fff}
+.v2 .risk-topbar .saved-drop{left:0;right:0;width:auto}
+.v2 .risk-topbar .saved-drop-inner{background:#20272cf5}
+.v2 .risk-topbar .saved-menu.open .saved-drop-inner{border-color:#ffffff26}
+/* Bouton « Simular un evento » de la fiche = même bouton que celui de départ */
+.v2 .territory-summary .map-simulate.in-card{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:0;height:auto;padding:10px 16px;margin:0;border:0;border-radius:999px;font-size:12.5px;font-weight:650;color:#0b1d24;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 8px 22px -10px rgb(var(--acc-rgb)/.8)}
+.v2 .territory-summary .map-simulate.in-card:hover{box-shadow:0 0 0 4px rgb(var(--acc-rgb)/.18),0 10px 26px -8px rgb(var(--acc-rgb)/.9)}
+/* Invite collée au coin bas droit du bouton */
+.v2 .map-left-stack .map-simulate-hint{position:relative;z-index:2;align-self:flex-end;margin:-16px -10px 0 0}
+/* Plus de bandeau sombre en haut de la carte ; indication de caméra plus lisible */
+.v2 .risk-topbar{background:none}
+.v2.is-workspace .map-gesture-hint{font-size:12px!important;font-weight:600;color:#f4fafb;opacity:1;text-shadow:0 1px 2px #000c,0 0 10px #000a;letter-spacing:.01em}
+/* Bouton Mostrar : accent par défaut, neutre une fois activé ; largeur fixe */
+.station-pill>button{min-width:74px;text-align:center;color:#0b1d24;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 0 14px -4px rgb(var(--acc-rgb)/.7)}
+.station-pill>button:hover{color:#0b1d24;filter:brightness(1.08)}
+.station-pill>button.on{color:#cfe3e8;background:#ffffff12;box-shadow:none}
+.station-pill>button.on:hover{background:#ffffff1f;color:#fff;filter:none}
+/* Panneau Lluvia plus serré autour du bouton */
+.v2 .map-left-stack .scenario-panel .rain-readout{margin:4px 0 6px;padding:8px 0 0}
+.v2 .map-left-stack .scenario-panel .primary-button{margin-top:6px}
+.v2 .map-left-stack .scenario-panel .scenario-footer{justify-content:center;gap:8px;margin-top:5px;font-size:9.5px;color:#7f99a3}
+.factors-button{width:100%;display:flex;align-items:center;gap:8px;margin-top:6px;padding:8px 14px;border-radius:999px;border:1px solid #a9d3d02e;font-size:12px;font-weight:600;color:#cfe3e8;transition:background .2s,border-color .2s}
+.factors-button:hover,.factors-button[aria-expanded=true]{background:#ffffff0d;border-color:rgb(var(--acc-rgb)/.45);color:#fff}
+.factors-button svg:last-child{margin-left:auto;transform:rotate(-90deg);transition:transform .3s var(--ease)}
+.factors-button svg.rotate-side{transform:rotate(90deg)}
+/* Fenêtre des facteurs aggravants, à droite de la colonne */
+.factors-panel{position:fixed;left:356px;top:122px;width:330px;max-height:calc(100svh - 150px);overflow:auto;z-index:12;padding:16px 16px 12px;border-radius:20px;background:#10212ef5;border:1px solid rgb(var(--acc-rgb)/.3);box-shadow:0 18px 40px -16px #000d;animation:factors-in .4s var(--ease) both}
+@keyframes factors-in{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}
+.factors-panel header{display:flex;align-items:center;justify-content:space-between}
+.factors-panel h3{margin:0;font-size:17px;font-weight:500;color:#eef7f4}
+.factors-panel>p{font-size:11.5px;color:#8fa6af;margin:4px 0 10px}
+.factors-panel ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.factors-panel li{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;padding:9px 10px;border-radius:14px;background:#ffffff06;border:1px solid #a9d3d01a}
+.factors-panel li>svg{color:var(--acc);margin-top:2px}
+.factors-panel li strong{display:block;font-size:12.5px;color:#eef7f4}.factors-panel li small{display:block;font-size:10.5px;line-height:1.4;color:#8fa6af;margin-top:2px}
+.pending-chip{grid-column:2;justify-self:start;font-size:9.5px;font-weight:600;color:#10222a;background:linear-gradient(135deg,#f1dca6,#e2bf79);padding:2px 8px;border-radius:999px}
+@media(max-width:760px){.factors-panel{left:14px;right:14px;width:auto;top:auto;bottom:65px;max-height:45svh}}
+/* Mis escenarios : le menu sort directement de la pastille (une seule capsule), aucune barre quand il est fermé */
+.v2 .risk-topbar .saved-menu{border-radius:21px;background:#2b3238d9;border:1px solid #ffffff1f;backdrop-filter:blur(12px);overflow:hidden;transition:border-radius .4s var(--ease),border-color .2s}
+.v2 .risk-topbar .saved-menu.open{border-radius:18px;border-color:#ffffff33}
+.v2 .risk-topbar .saved-pill{background:none!important;border:0!important;backdrop-filter:none;border-radius:0}
+.v2 .risk-topbar .saved-drop{position:static;width:auto}
+.v2 .risk-topbar .saved-drop-inner{border:0!important;border-radius:0;background:none;box-shadow:none}
+.v2 .risk-topbar .saved-menu.open .saved-drop-inner{border-top:1px solid #ffffff1a!important}
+
+/* ===== Mondes « Manejo de datos » / « Climatología » (la carte se transforme) ===== */
+.world-map{position:fixed!important;inset:0!important;height:100%!important;min-height:100svh;opacity:1!important;transition:opacity .8s}
+.is-world .map-system .map-attribution{opacity:.5}
+.world-space{position:fixed;inset:0;z-index:5;pointer-events:none}
+.world-space>*{pointer-events:auto}
+.world-top{position:absolute;top:24px;left:28px;display:flex;align-items:center;gap:16px;animation:world-in .9s var(--ease) .3s both}
+.app .world-space .world-title{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-weight:500;font-size:30px;letter-spacing:-.01em;color:#eef7f4;text-shadow:0 2px 18px #000a;margin:0}
+.world-title span{color:var(--acc)}
+.world-pills{position:absolute;left:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:16px;width:300px}
+.world-pill{display:flex;align-items:center;gap:14px;width:100%;padding:12px 18px 12px 12px;border-radius:999px;border:1px solid #9ee3cc38;background:#07141bcc;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#e8f3f0;font-size:15.5px;font-weight:600;text-align:left;cursor:pointer;box-shadow:0 10px 40px #0007;transition:border-color .25s,box-shadow .3s,background .3s;animation:world-pill-in .8s var(--ease) both;animation-delay:calc(.9s + var(--i)*.14s)}
+.world-pill:hover{border-color:#9ee3cc8c;box-shadow:0 10px 40px #0007,0 0 0 4px #9ee3cc1c,0 0 34px #9ee3cc33}
+.world-pill.active{background:#0e2a2bdd;border-color:var(--acc);box-shadow:0 10px 40px #0007,0 0 30px #9ee3cc44}
+.world-pill-icon{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#9ee3cc17;color:var(--acc);border:1px solid #9ee3cc30}
+.world-pill-label{flex:1;line-height:1.25}
+.world-pill-chev{flex:none;color:#9ee3cc99;transition:transform .3s var(--ease)}
+.world-pill.active .world-pill-chev{transform:rotate(180deg)}
+.world-climate .world-pill-icon{background:#ffe2aa14;color:#ffe2aa;border-color:#ffe2aa30}
+.world-climate .world-pill.active{border-color:#ffe2aa;box-shadow:0 10px 40px #0007,0 0 30px #ffe2aa33}
+.world-climate .world-title span{color:#ffe2aa}
+.world-panel{position:absolute;left:352px;right:28px;top:84px;bottom:52px;display:flex;flex-direction:column;border-radius:22px;border:1px solid #9ee3cc2e;background:#08141bed;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 30px 110px #000a;overflow:hidden;transform-origin:left center;animation:world-panel-in .55s var(--ease) both}
+.world-panel-head{flex:none;display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #9ee3cc1f}
+.world-panel-head h2{margin:0;font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-weight:500;font-size:21px;color:#eef7f4}
+.world-panel-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 22px 24px}
+.world-panel-body::-webkit-scrollbar-track{margin:14px 0}
+.world-section{animation:reader-in .4s var(--ease) both}
+.world-caption{position:absolute;right:28px;bottom:22px;font-size:11.5px;color:#d9ebe6;padding:6px 13px;border-radius:999px;background:#05101699;backdrop-filter:blur(8px);border:1px solid #9ee3cc22;animation:world-in .8s var(--ease) 1.4s both}
+.world-wind{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1.2s;mix-blend-mode:screen}
+.world-wind.on{opacity:1}
+.world-bogota{position:relative;width:14px;height:14px;pointer-events:none}
+.world-bogota i{position:absolute;inset:0;border-radius:50%;background:#ffe2aa;box-shadow:0 0 14px #ffe2aa}
+.world-bogota i::after{content:'';position:absolute;inset:-9px;border-radius:50%;border:1.5px solid #ffe2aa;animation:world-ping 2.4s ease-out infinite}
+.world-bogota span{position:absolute;left:22px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:600;color:#fff;text-shadow:0 1px 8px #000}
+@keyframes world-ping{from{transform:scale(.4);opacity:.9}to{transform:scale(2.2);opacity:0}}
+@keyframes world-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes world-pill-in{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+@keyframes world-panel-in{from{opacity:0;transform:scaleX(.94) translateX(-18px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.world-pills{top:auto;bottom:20px;left:16px;right:16px;width:auto;transform:none;gap:10px}.world-pill{padding:8px 14px 8px 8px;font-size:14px}.world-pill-icon{width:36px;height:36px}.world-top{left:16px;top:16px}.world-title{font-size:23px}.world-panel{left:12px;right:12px;top:70px;bottom:12px;z-index:3}.world-caption{display:none}}
+@media (prefers-reduced-motion:reduce){.world-pill,.world-panel,.world-top,.world-caption{animation:none}}
+
+/* « Simular un evento » = tête de la capsule ; plus de barre Buscar (2026-11-16) */
+.map-left-stack .sim-capsule{border-color:transparent;background:transparent;backdrop-filter:none;box-shadow:none;border-radius:21px;transition:background .45s var(--ease),border-color .45s var(--ease),box-shadow .45s}
+.map-left-stack .sim-capsule.open,.v2 .map-left-stack .sim-capsule.open{background:#10212ef2;border-color:rgb(var(--acc-rgb)/.32);backdrop-filter:blur(14px);box-shadow:0 18px 40px -16px #000d}
+.map-left-stack .sim-capsule:hover{box-shadow:none}
+.v2 .map-left-stack .sim-capsule>button.sim-head{justify-content:center;gap:9px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#0b1d24;font-size:12.5px;font-weight:650;cursor:pointer;box-shadow:0 8px 22px -10px rgb(var(--acc-rgb)/.8)}
+.v2 .map-left-stack .sim-capsule>button.sim-head:hover{box-shadow:0 0 0 4px rgb(var(--acc-rgb)/.18),0 10px 26px -8px rgb(var(--acc-rgb)/.9)}
+.v2 .map-left-stack .sim-capsule.has-territory>button.sim-head{cursor:default}
+.sim-head .sim-chev{margin-left:2px;transition:transform .35s var(--ease)}
+.sim-capsule.open .sim-head .sim-chev{transform:rotate(180deg)}
+.sim-pick-title{display:flex;align-items:center;gap:8px;margin:0;padding:12px 16px 8px;font-size:12px;color:#ffe08a}
+.sim-pick-title svg{flex:none;animation:hint-tap 1.4s ease-in-out infinite}
+.map-left-stack .sim-capsule .map-search-list{height:auto;max-height:260px;overflow-y:auto;border-top:0;padding:0 6px 8px}
+.map-left-stack .sim-capsule .map-search-list>button{border-radius:12px;padding:8px 10px}
+.map-left-stack .sim-capsule .map-search-list>button:hover{background:#ffffff0d;color:#fff}
+.sim-zone{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 12px 12px 18px;animation:reader-in .4s var(--ease) both}
+.sim-zone strong{font-family:'DM Sans Variable',sans-serif;letter-spacing:-.02em;font-size:17px;font-weight:500;color:#f1f8f6;line-height:1.2}
+.v2 .map-left-stack .sim-zone .map-clear-territory{position:static;flex:none}
+
+/* Modèle de simulation + base de données de la ladera (2026-11-16) */
+.model-block{margin:4px 0 16px;padding:12px 13px;border-radius:16px;border:1px solid #a6c2cf26;background:#ffffff05}
+.model-head{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a9bcc4}
+.model-head svg{color:var(--acc)}
+.model-head .pending-chip{margin-left:auto;text-transform:none;letter-spacing:0}
+.model-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.model-pills button{padding:6px 11px;border-radius:999px;border:1px solid #a6c2cf33;font-size:12px;font-weight:600;color:#d5e4e8;transition:border-color .2s,background .2s,box-shadow .25s}
+.model-pills button:hover{border-color:rgb(var(--acc-rgb)/.5)}
+.model-pills button.active{background:rgb(var(--acc-rgb)/.16);border-color:var(--acc);color:#fff;box-shadow:0 0 14px rgb(var(--acc-rgb)/.25)}
+.model-kind{margin:9px 0 6px;font-size:12px;color:var(--acc);font-weight:600}
+.model-lines{margin:0;display:grid;gap:5px}
+.model-lines div{display:grid;grid-template-columns:72px 1fr;gap:8px;font-size:11.5px;line-height:1.35}
+.model-lines dt{color:#8fa5ad}.model-lines dd{margin:0;color:#dce8eb}
+.model-times{display:flex;gap:9px;margin-top:10px;padding-top:10px;border-top:1px solid #a6c2cf1f;font-size:11.5px;line-height:1.4;color:#c4d3d8}
+.model-times svg{flex:none;margin-top:2px;color:#ffe08a}
+.model-times p{margin:0 0 4px}.model-times b{color:#f3f8f7;font-weight:650}
+.model-select{display:flex;flex-direction:column;gap:5px;margin:0 0 12px;font-size:12px;color:#a9bcc4}
+.model-select select{padding:8px 11px;border-radius:12px;border:1px solid #a6c2cf33;background:#0c1a22;color:#eef6f4;font-size:12.5px}
+.fs-readout{display:flex;align-items:center;gap:12px;margin:4px 0 12px;padding:10px 14px;border-radius:14px;border:1px solid}
+.fs-readout strong{font-size:22px;font-weight:700}
+.fs-readout span{font-size:12px;color:#d5e4e8}
+.fs-readout.ok{border-color:#7fd6a855;background:#7fd6a812}.fs-readout.ok strong{color:#8fe0b3}
+.fs-readout.mid{border-color:#efc36955;background:#efc36912}.fs-readout.mid strong{color:#efc369}
+.fs-readout.bad{border-color:#f1786766;background:#f1786714}.fs-readout.bad strong{color:#f17867}
+.v2 .map-left-stack .sim-capsule>button.sim-head svg{order:0!important;transform:none!important;margin:0!important;position:static!important}
+.v2 .map-left-stack .sim-capsule.open:not(.has-territory)>button.sim-head svg.sim-chev{transform:rotate(180deg)!important}
+.model-head .pending-chip{white-space:nowrap;padding:3px 9px;font-size:10.5px}
+
+/* Fenêtres « page » : marges réduites, contenu collé au titre (2026-11-16) */
+.v2 .modal-backdrop:has(.modal.wide){padding:14px 16px;align-items:stretch}
+.v2 .modal.wide{width:min(1560px,100%);max-width:none;max-height:calc(100svh - 28px);margin:0 auto}
+.v2 .modal-header{padding:16px 24px 14px}
+.data-hub.data-hub-compact{padding:12px 16px 18px}
+.data-fold-head{padding:12px 14px}
+.data-fold-body{padding:0 14px 14px}
+.climate-body{padding:6px 2px 10px}
+.context-sources,.context-sources.few{padding:0;margin:0;max-width:none}
+.library-raw li>a,.library-raw li>div{grid-template-columns:20px minmax(0,1fr) auto;gap:8px;padding:5px 4px}
+.library-raw .ref-n{text-align:right;font-size:11px}
+.world-panel{top:78px;right:20px;bottom:20px}
+.world-panel-head{padding:14px 20px}
+.world-panel-body{padding:10px 18px 18px}
+.world-panel-body .data-hub.data-hub-compact{padding:0}
+
+/* Climatología : analyse structurée (2026-11-16) */
+.world-space.has-panel .world-caption{display:none}
+.climate-steps{display:flex;flex-direction:column;gap:18px;margin-top:14px}
+.climate-steps>section>h4{display:flex;align-items:center;gap:10px;margin:0 0 8px;font-size:16px;font-weight:600;color:#eef7f4;letter-spacing:-.01em}
+.climate-steps>section>h4>span{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgb(var(--acc-rgb)/.14);color:var(--acc);font-size:12.5px;font-weight:700}
+.climate-steps>section>h4>a{margin-left:auto;font-size:11px;font-weight:500;color:#8fb5ab}
+.climate-facts{margin:0;display:grid;gap:0;border-top:1px solid #a6c2cf1a}
+.climate-facts>div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:14px;padding:8px 2px;border-bottom:1px solid #a6c2cf1a}
+.climate-facts dt{font-size:12.5px;font-weight:650;color:#cfe3dc}
+.climate-facts dd{margin:0;font-size:13px;line-height:1.5;color:#c3d3d8}
+.climate-plain{margin:6px 0 0;font-size:13px;line-height:1.55;color:#c3d3d8;text-align:justify}
+.climate-outro{margin-top:16px}
+.climate-model-bar{display:flex;justify-content:flex-end;margin-bottom:8px}
+.model-pending-btn{display:inline-flex;align-items:center;gap:7px;padding:6px 8px 6px 12px;border-radius:999px;border:1px solid rgb(var(--acc-rgb)/.4);background:rgb(var(--acc-rgb)/.08);color:#e8f4f1;font-size:12px;font-weight:600;white-space:nowrap;cursor:not-allowed;transition:box-shadow .25s}
+.model-pending-btn:hover{box-shadow:0 0 0 3px rgb(var(--acc-rgb)/.12)}
+.model-pending-btn svg{color:var(--acc)}
+.model-pending-btn .pending-chip{font-size:10px;padding:2px 7px}
+.projection-chart.compact{padding:10px 12px;margin:0}
+.projection-chart.compact .projection-ranges{margin:0}
+.precip-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.precip-row>div{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid #a6c2cf22;background:#71c7f50a}
+.precip-row>div.active{border-color:#71c7f5aa;background:#71c7f518}
+.precip-row strong{font-size:15px;color:#bfe6f8}.precip-row span{font-size:11px;color:#8fa5ad}
+.impact-table-wrap{overflow-x:auto}
+.impact-table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.45}
+.impact-table th,.impact-table td{padding:9px 8px;text-align:left;vertical-align:top;border-bottom:1px solid #a6c2cf1f;color:#c9d9dd}
+.impact-table thead th{font-size:11px;font-weight:650;color:#8fa5ad;text-transform:none;border-bottom-color:#a6c2cf33}
+.impact-table tbody th{font-weight:650;color:#eef7f4;white-space:nowrap}
+.impact-table tbody th .adaptation-mark{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--risk-color);margin-right:7px;vertical-align:1px;position:static}
+@media (max-width:760px){.climate-facts>div{grid-template-columns:1fr;gap:2px}.precip-row{grid-template-columns:1fr 1fr}}
+.world-clouds{mix-blend-mode:normal}
+.projection-chart.compact .range-track{height:56px;background:repeating-linear-gradient(0deg,#abc6c51a 0,#abc6c51a 1px,transparent 1px,transparent 14px)}
+.projection-chart.compact .projection-ranges{gap:8px}
+.projection-chart.compact .projection-ranges button{padding:8px 6px}
+.impact-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--risk-color);margin-right:8px;vertical-align:1px}
+
+/* ===== Passe du 2026-11-19 ===== */
+/* Page de garde */
+.landing{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 55%,#0b141c33,#0b141ca8 80%);animation:landing-in 1.6s var(--ease) both}
+.landing-logo{position:absolute;top:26px;left:30px}
+.landing-center{display:flex;flex-direction:column;align-items:center;gap:16px}
+.landing-enter{display:inline-flex;align-items:center;gap:16px;padding:20px 34px;border-radius:999px;font-size:clamp(22px,2.6vw,34px);font-weight:500;letter-spacing:-.02em;color:#f2f8f6;background:#0d1b24b8;border:1px solid rgb(var(--acc-rgb)/.45);backdrop-filter:blur(14px);box-shadow:0 20px 60px -20px #000c,0 0 40px -12px rgb(var(--acc-rgb)/.6);transition:box-shadow .5s var(--ease),border-color .4s,background .4s;animation:landing-rise 1.8s var(--ease) .3s both}
+.landing-enter:hover{border-color:var(--acc);background:#10232ecc;box-shadow:0 20px 60px -20px #000c,0 0 0 6px rgb(var(--acc-rgb)/.12),0 0 60px -6px rgb(var(--acc-rgb)/.8)}
+.landing-enter svg{color:var(--acc);transition:transform .4s var(--ease)}
+.landing-enter:hover svg{transform:translateX(4px)}
+.landing-proto{margin:0;font-size:12px;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:#ffe08a;animation:landing-rise 1.8s var(--ease) .7s both}
+.landing-foot{position:absolute;bottom:22px;margin:0;font-size:12px;color:#c7d6da99;letter-spacing:.04em}
+.is-landing .map-system.home-map{opacity:1}
+.is-landing .landing-scrim{opacity:.35!important}
+@keyframes landing-in{from{opacity:0}to{opacity:1}}
+@keyframes landing-rise{from{opacity:0;transform:translateY(14px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+/* Transitions douces : voile qui s'efface, carte qui s'éclaire peu à peu, interface qui apparaît en cascade */
+.landing-scrim{transition:opacity 1.8s var(--ease)}
+.landing-scrim.off{opacity:0}
+.map-system{transition:opacity 1.8s var(--ease)}
+.risk-enter .map-canvas{animation:soft-light 2.4s var(--ease) both}
+@keyframes soft-light{from{filter:brightness(.55) saturate(.7)}to{filter:none}}
+.risk-enter .risk-topbar>*,.risk-enter .map-left-stack,.risk-enter .map-camera-tools,.risk-enter .map-gesture-hint{animation:soft-in 1.3s var(--ease) both}
+.risk-enter .risk-topbar>*:nth-child(2){animation-delay:.15s}.risk-enter .risk-topbar>*:nth-child(n+3){animation-delay:.3s}
+.risk-enter .map-left-stack{animation-delay:.55s}.risk-enter .map-camera-tools,.risk-enter .map-gesture-hint{animation-delay:.8s}
+@keyframes soft-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+/* Barre du haut : le menu Mis escenarios s'ouvre vers le bas sans déplacer les titres ; Capas et Datos à côté */
+.v2 .risk-topbar{align-items:flex-start;padding-top:12px;height:auto}
+.v2 .risk-topbar .topbar-slot{display:contents}
+.v2 .risk-topbar .layers-menu,.v2 .risk-topbar .data-menu,.v2.is-workspace .risk-topbar .layers-menu,.v2.is-workspace .risk-topbar .data-menu{position:relative!important;inset:auto!important;top:auto!important;right:auto!important;left:auto!important;pointer-events:auto;z-index:20}
+.v2 .risk-topbar .map-dropdown{top:calc(100% + 8px);left:0;right:auto}
+/* Simular un evento + zone + fiche = une seule fenêtre */
+.map-left-stack .sim-capsule .map-territory-fold .territory-summary,.map-left-stack .sim-capsule .map-territory-fold .scenario-panel,.v2 .map-left-stack .sim-capsule .map-territory-fold .results-panel{border:0;border-top:1px solid #a6c2cf1f;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;margin:0}
+.map-left-stack .sim-capsule .sim-zone{padding-bottom:8px}
+/* Movimientos en masa : noms des secteurs toujours visibles */
+.map-label.always>span{border-color:#e0a776aa;box-shadow:0 8px 22px -8px #000c,0 0 16px -6px #e0a776aa}
+.map-label.always.hot>span{border-color:#f4c79a;background:#2a1d12ee}
+/* Bibliothèque */
+.library-modal-body{padding:14px 22px 22px}
+.map-label.always{pointer-events:auto}
+@media (max-width:760px){
+ .map-left-stack .sim-capsule,.map-left-stack .sim-capsule.open,.v2 .map-left-stack .sim-capsule.open{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow:visible}
+ .v2 .risk-topbar{flex-wrap:wrap;row-gap:8px;padding-right:14px}
+ .v2 .risk-topbar .saved-menu{width:auto;flex:1 1 140px;margin-left:0}
+ .map-left-stack{top:118px}
+}
+
+/* Retouches 2026-11-19 (2) */
+.landing-enter{border:0;box-shadow:0 20px 60px -20px #000c}
+.landing-enter:hover{box-shadow:0 20px 60px -20px #000c,0 0 50px -10px rgb(var(--acc-rgb)/.55)}
+.landing.leaving .landing-enter{animation:landing-press .75s var(--ease) forwards}
+.landing.leaving .landing-proto,.landing.leaving .landing-foot,.landing.leaving .landing-logo{transition:opacity .5s;opacity:0}
+
+@keyframes landing-press{0%{transform:scale(1)}30%{transform:scale(.95)}100%{transform:scale(1.04) translateY(-10px);opacity:0;filter:blur(4px)}}
+/* Cartes de risque : dessin et titre centrés */
+.v2 .home-v3 .risk-card .risk-art{left:50%!important;top:4%!important;width:78%!important;height:72%!important;transform:translateX(-50%)}
+.v2 .home-v3 .risk-card:hover .risk-art{transform:translateX(-50%) scale(1.04)}
+.v2 .home-v3 .risk-card h2{left:0!important;right:0!important;text-align:center}
+.v2 .home-v3 .otros-card .otros-art{position:absolute;left:0;right:0;top:4%;height:72%}
+/* Contrôles caméra en bas à droite, mentions à gauche de ceux-ci */
+.v2.is-workspace .map-camera-tools.v3-camera,.v2.is-workspace:has(.panel) .map-camera-tools.v3-camera,.v2.is-workspace:has(.map-left-stack .panel) .map-camera-tools.v3-camera,.v2.is-workspace:has(.map-left-stack .territory-summary) .map-camera-tools.v3-camera{top:auto!important;bottom:14px!important;right:16px!important}
+.v2.is-workspace .map-attribution{right:92px}
+/* Page de garde : aucun contour, ni au survol ni au focus ; « Prototipo » part avec le bouton */
+.landing-enter,.landing-enter:hover,.landing-enter:focus,.landing-enter:focus-visible{outline:none!important;border:0!important;box-shadow:0 20px 60px -20px #000c!important}
+.landing-enter:hover{background:#13293ad9}
+.landing.leaving .landing-proto{animation:landing-press .75s var(--ease) forwards;transition:none}

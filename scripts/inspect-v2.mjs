@@ -1,0 +1,18 @@
+import { chromium } from '@playwright/test';
+import fs from 'node:fs';
+const browser=await chromium.launch({headless:true});
+const page=await browser.newPage({viewport:{width:1512,height:982},deviceScaleFactor:1});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://127.0.0.1:5180/',{waitUntil:'domcontentloaded'});await page.waitForTimeout(3500);
+await page.screenshot({path:'artifacts/v2-01-home.png',fullPage:true});
+await page.getByRole('button',{name:'Inundaciones',exact:true}).click();await page.waitForTimeout(1800);
+await page.screenshot({path:'artifacts/v2-02-map.png'});
+await page.getByRole('button',{name:'Buscar cuenca',exact:true}).click();await page.locator('.map-search-list').getByRole('button',{name:'Río Tunjuelo',exact:true}).click();await page.waitForTimeout(2000);
+await page.screenshot({path:'artifacts/v2-03-tunjuelo.png'});
+await page.getByRole('button',{name:'Simular una lluvia',exact:true}).click();await page.getByRole('button',{name:'Visualizar escenario',exact:true}).click();await page.waitForTimeout(9000);
+await page.getByRole('button',{name:'Pausar animación',exact:true}).click();await page.screenshot({path:'artifacts/v2-04-simulation.png'});
+console.log('COUNTERS',await page.locator('.live-impact').innerText());
+await page.getByRole('button',{name:'Volver al inicio',exact:true}).click();await page.getByRole('button',{name:/Climatología/}).click();await page.waitForTimeout(600);await page.screenshot({path:'artifacts/v2-05-climate.png'});
+await page.getByRole('button',{name:'Análisis prospectivo',exact:true}).click();await page.screenshot({path:'artifacts/v2-06-projection.png'});await page.getByRole('button',{name:'Cerrar ventana',exact:true}).click();
+await page.getByRole('button',{name:'Movimientos en masa',exact:true}).click();await page.waitForTimeout(1600);await page.getByRole('button',{name:'Buscar sector',exact:true}).click();await page.locator('.map-search-list').getByRole('button',{name:'Altos de la Estancia',exact:true}).click();await page.waitForTimeout(1800);await page.getByRole('button',{name:'Configurar escenario',exact:true}).click();await page.getByRole('button',{name:'Visualizar deslizamiento',exact:true}).click();await page.locator('.three-host[data-ready="true"]').waitFor();await page.waitForTimeout(8500);await page.getByRole('dialog').getByRole('button',{name:'Pausar animación',exact:true}).click();await page.screenshot({path:'artifacts/v2-07-landslide.png'});
+console.log('ERRORS',errors);fs.writeFileSync('artifacts/v2-browser-errors.json',JSON.stringify(errors,null,2));await browser.close();

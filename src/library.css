@@ -1,0 +1,13 @@
+.source-library{display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left}
+.source-library .lib-tabs{display:flex;flex-wrap:wrap;gap:6px}
+.source-library .lib-tabs button{border:1px solid #a6c2cf33;border-radius:999px;padding:6px 12px;font-size:12px;background:transparent;color:inherit;cursor:pointer}
+.source-library .lib-tabs button:hover{border-color:var(--acc)}
+.source-library .lib-tabs button.on{background:rgb(var(--acc-rgb)/.16);border-color:var(--acc)}
+.source-library .lib-count{opacity:.6;margin-left:4px}
+.source-library .lib-filter{width:100%;max-width:320px;border:1px solid #a6c2cf33;border-radius:999px;padding:6px 12px;font-size:12px;background:transparent;color:inherit}
+.source-library .lib-filter:focus{outline:none;border-color:var(--acc)}
+.source-library .lib-group{margin:6px 0 2px;font-size:12px;font-weight:600;color:var(--acc)}
+.source-library section{width:100%}
+.source-library .library-raw .ref-n{width:20px;min-width:20px;font-size:11px}
+.source-library .library-raw li>a,.source-library .library-raw li>div{display:grid;grid-template-columns:20px 1fr;gap:6px;text-align:left}
+.source-library .lib-empty{font-size:12px;opacity:.7;margin:0}

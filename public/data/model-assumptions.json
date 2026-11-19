@@ -1,0 +1,15 @@
+{
+  "version": "V2 · 15 noviembre 2026",
+  "status": "Demostración visual, sin calibración ni cálculo físico de riesgo",
+  "geography": "EAAB: cuencas, microcuencas y corrientes. DEM regional Terrarium. No son zonas de amenaza.",
+  "buildings": "Huellas de copia UDFJC del Catastro 2022. Altura del atributo, o pisos × 3 m cuando falta. Muestras limitadas; no extrapolables al barrio o cuenca.",
+  "water": "Buffer progresivo alrededor del cauce EAAB, hasta 480 × severidad × 0,72 metros para inundación y 240 × severidad × 0,72 para torrencial. Sin balance hídrico, rugosidad, pendiente hidráulica o caudal resuelto.",
+  "landslide": "Corredor prescrito entre una parte alta y otra baja del DEM; no resuelve estabilidad ni dinámica. Ancho y desplazamiento responden a una severidad narrativa. Los colores de suelo y espesores no representan un mapa geológico medido.",
+  "occupancy": "Asignación determinista por área y supuesto de uso. No es población censal ni ocupación medida.",
+  "economy": {"unit":"COP, sin año monetario calibrado", "replacementPerSquareMeter":"1.800.000–4.000.000 COP/m², distribución sintética", "highDamageFraction":0.44, "mediumDamageFraction":0.12, "indirectFractionOfDirect":0.22},
+  "human": "criticalPeople = suma de ocupantes sintéticos en edificios con daño alto. No calcula muertes, heridos ni probabilidad de fallecimiento.",
+  "time": "22 segundos reales reproducen una secuencia narrativa. El cursor 0–100 % y la duración elegida no constituyen un cálculo de velocidad física.",
+  "rainfall": "Coeficientes del punto 0 EAAB del corpus E2. No se asignaron espacialmente por cuenca. El extremo usa 1,3 × IDF T=100 años, sin probabilidad propia.",
+  "climate": "Normales IDEAM y rangos del estudio IDIGER 2026 se muestran por separado. No se usan porcentajes anuales de lluvia para multiplicar IDF ni pérdidas futuras.",
+  "validation": "Design Next Step documenta datos, modelos, responsables propuestos, incertidumbres y criterios de cierre. Ningún estado local equivale a validación institucional."
+}

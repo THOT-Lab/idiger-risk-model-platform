@@ -1,0 +1,308 @@
+{
+  "version": "V2",
+  "generatedAt": "2026-11-15T08:25:25.320566+00:00",
+  "scope": "Datos empaquetados para demostración. No certifica exactitud ni vigencia institucional.",
+  "sources": [
+    {
+      "id": "EAAB-MICRO/SUB/RED",
+      "endpoint": "https://acueducto.com.co/wassigue/arcgis/rest/services/EAAB/",
+      "consulted": "2026-11-15",
+      "rawCache": "docs/research/v2",
+      "coverage": "19 localidades del corpus, sin Sumapaz; ver geography-validation.json"
+    },
+    {
+      "id": "EXP-HUELLAS",
+      "endpoint": "https://services.arcgis.com/deQSb0Gn7gDPf3uV/arcgis/rest/services/Construcciones_Bogota_DC_vista/FeatureServer/0/query",
+      "sourceVersion": "Copia pública UDFJC, agosto 2022",
+      "scope": "Muestras, no catastro exhaustivo; límites de consulta 8.000/24.000 registros y tope de visualización 4.500; incluye corredor receptor del río Bogotá fuera del drenaje directo."
+    },
+    {
+      "id": "CL-NORMALES",
+      "original": "Normales_Climatológicas_de_Colombia_20260610.csv",
+      "sha256": "624ae0993d02e3726db0e58e273ff2245b8989d48a20692771865cca8a38e0c5",
+      "scope": "265 registros originales. El Dorado: códigos 21205790/21205791, continuidad por verificar."
+    },
+    {
+      "id": "S16",
+      "endpoint": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
+      "scope": "Zoom 13, DEM regional; cinco recortes de 65×65 muestras. Sin propiedades de suelo inferidas."
+    }
+  ],
+  "files": [
+    {
+      "path": "data/bogota-satellite.jpg",
+      "bytes": 1052903,
+      "sha256": "519bcb1d0cebc492a8b2aa59e16d1430ebd07594e0260b95b672fc5e3cf0496f"
+    },
+    {
+      "path": "data/building-provenance.json",
+      "bytes": 9652,
+      "sha256": "defaafe1fd910793be043d581fc7164f3b3eae611771c2f796fa3bea51092b86"
+    },
+    {
+      "path": "data/buildings/arzobispo.json",
+      "bytes": 466214,
+      "sha256": "0af9e46c3f728ff86397f498e143573ae5258e40102fa46ba3346d3fe0391893"
+    },
+    {
+      "path": "data/buildings/bogota.json",
+      "bytes": 578394,
+      "sha256": "3e98a6178e189da1bec2f2b5847ea54d29d5aea56824139e6a3dd26e2610ea90"
+    },
+    {
+      "path": "data/buildings/chiguaza.json",
+      "bytes": 697607,
+      "sha256": "a7660a1bb5d4f1176806b9c83943f6c636df4ebf87f0bec4f83bdbde52ddb3f4"
+    },
+    {
+      "path": "data/buildings/codito.json",
+      "bytes": 291019,
+      "sha256": "c8c20488cefc846ef743d7298da743e10f990e25aca4db6fe572ec8545949ead"
+    },
+    {
+      "path": "data/buildings/cristobal.json",
+      "bytes": 135962,
+      "sha256": "65b7f3c3e7fb11100a247a829b8545381f74d20aceca0deaa71f6c8779447abe"
+    },
+    {
+      "path": "data/buildings/delicias.json",
+      "bytes": 658837,
+      "sha256": "280362de65ac98257c4bf8e3d4eede0cfccf79a4541134f13121b900594245aa"
+    },
+    {
+      "path": "data/buildings/esperanza.json",
+      "bytes": 1029501,
+      "sha256": "08bc8586dd342317ed3e3918c86973ea3c724aa91d65d96080240028c79367a0"
+    },
+    {
+      "path": "data/buildings/estancia.json",
+      "bytes": 646439,
+      "sha256": "4094eadbd2212b0756d25213423b4431462c4048042f45f08f0c0a89fa6f988a"
+    },
+    {
+      "path": "data/buildings/fucha.json",
+      "bytes": 894194,
+      "sha256": "6ba34a69956c23435cde5f52c6f59965eac33a5dec4fc4c722ac27f04766b217"
+    },
+    {
+      "path": "data/buildings/limas.json",
+      "bytes": 654721,
+      "sha256": "f64223dd0bddeb9f50e6bba4046138579005515cf807fb670b14c6467558c4a7"
+    },
+    {
+      "path": "data/buildings/mc-21200605.json",
+      "bytes": 1933,
+      "sha256": "b76ae4fe9df60c3def28955d669eb0a7eb7d7bb3e1b604d856898bca38b2a74c"
+    },
+    {
+      "path": "data/buildings/mc-21200610.json",
+      "bytes": 8472,
+      "sha256": "908f57f136443f25886e257f52ae15c1d0ebd1b23c43b2baa3798d7a7a44089c"
+    },
+    {
+      "path": "data/buildings/mc-21202004.json",
+      "bytes": 275472,
+      "sha256": "7a985a45fba30cd10df664b0857d789cf263f6c8258667934cc5b89fe8a90f30"
+    },
+    {
+      "path": "data/buildings/mc-21202005.json",
+      "bytes": 286730,
+      "sha256": "0f8539c50c0b95165bbaa6be82aa75429649002ebac2836eabeff650f198f660"
+    },
+    {
+      "path": "data/buildings/mc-21202006.json",
+      "bytes": 42,
+      "sha256": "ed778c73ea51338d6576fb5992b189f2b94d9f3d5e199f46c1af520d6b0b3e6c"
+    },
+    {
+      "path": "data/buildings/mc-21202007.json",
+      "bytes": 49792,
+      "sha256": "5f7902dc8a1917a11cb5d3221e6b60506ca56f5c713705c4d89be4c21b487c66"
+    },
+    {
+      "path": "data/buildings/mc-21202008.json",
+      "bytes": 646754,
+      "sha256": "26c2ba09e5179f47406a55fdd2fe78a8da956a2ac6d61676246ef5a5bf6fd6d3"
+    },
+    {
+      "path": "data/buildings/mc-21202009.json",
+      "bytes": 326124,
+      "sha256": "abfc2641f3fd0f65e9c4449c0ec83d11f3c371961f2618d0703c8c450f50072c"
+    },
+    {
+      "path": "data/buildings/mc-21202106.json",
+      "bytes": 268033,
+      "sha256": "36615ee8103e13369c8b04b1bfc81272ab15e47503496190bd8607c2b04d9ee5"
+    },
+    {
+      "path": "data/buildings/mc-21202204.json",
+      "bytes": 287632,
+      "sha256": "6be94776233d951216138fe0d53e1f406fbcc4e41bbf0bd2e32d3d152e4dd1be"
+    },
+    {
+      "path": "data/buildings/mc-21202205.json",
+      "bytes": 706786,
+      "sha256": "55a6b942caaa0c9327dccb045fa10427553d2098c203904624d8623267064ef2"
+    },
+    {
+      "path": "data/buildings/mc-21202206.json",
+      "bytes": 131986,
+      "sha256": "e7a3187d5cdb9b10501d3cf1e9a5d1c19de019489c28b4b9f4b6fb8fc0e34330"
+    },
+    {
+      "path": "data/buildings/mc-21202208.json",
+      "bytes": 34990,
+      "sha256": "d924b4c026383402b1f8013db1e49ce05e4f799055d4e500ca6b8831588706cc"
+    },
+    {
+      "path": "data/buildings/paraiso.json",
+      "bytes": 1164626,
+      "sha256": "5d1d2b38521a5caa51464f069b8b93574d06e8263224f7d5aa659bc998358dff"
+    },
+    {
+      "path": "data/buildings/salitre.json",
+      "bytes": 1538197,
+      "sha256": "84048044ed14995c5eb9ef57e4d5f698d6c674f12a731e922f5d766ec4e6221c"
+    },
+    {
+      "path": "data/buildings/sc-211910.json",
+      "bytes": 42,
+      "sha256": "ed778c73ea51338d6576fb5992b189f2b94d9f3d5e199f46c1af520d6b0b3e6c"
+    },
+    {
+      "path": "data/buildings/sc-211911.json",
+      "bytes": 42,
+      "sha256": "ed778c73ea51338d6576fb5992b189f2b94d9f3d5e199f46c1af520d6b0b3e6c"
+    },
+    {
+      "path": "data/buildings/sc-212017.json",
+      "bytes": 11298,
+      "sha256": "b1f5718b19e04eaa64524e5e489a0d2f21bf4bb325f9fd02d54fc2bef42f1164"
+    },
+    {
+      "path": "data/buildings/sc-350221.json",
+      "bytes": 42,
+      "sha256": "ed778c73ea51338d6576fb5992b189f2b94d9f3d5e199f46c1af520d6b0b3e6c"
+    },
+    {
+      "path": "data/buildings/sc-350222.json",
+      "bytes": 42,
+      "sha256": "ed778c73ea51338d6576fb5992b189f2b94d9f3d5e199f46c1af520d6b0b3e6c"
+    },
+    {
+      "path": "data/buildings/sc-350223.json",
+      "bytes": 42,
+      "sha256": "ed778c73ea51338d6576fb5992b189f2b94d9f3d5e199f46c1af520d6b0b3e6c"
+    },
+    {
+      "path": "data/buildings/sc-350224.json",
+      "bytes": 42,
+      "sha256": "ed778c73ea51338d6576fb5992b189f2b94d9f3d5e199f46c1af520d6b0b3e6c"
+    },
+    {
+      "path": "data/buildings/sc-350225.json",
+      "bytes": 42,
+      "sha256": "ed778c73ea51338d6576fb5992b189f2b94d9f3d5e199f46c1af520d6b0b3e6c"
+    },
+    {
+      "path": "data/buildings/teusaca.json",
+      "bytes": 26897,
+      "sha256": "35c036f5f24d50c0c2227faac77233253c2e1cb5171ba9901f8f017968ceae8d"
+    },
+    {
+      "path": "data/buildings/torca.json",
+      "bytes": 684474,
+      "sha256": "44952de9de1fd65b03e20ec5a7cacdcb1062a5a87b30d370fac20492976ddc49"
+    },
+    {
+      "path": "data/buildings/tunjuelo.json",
+      "bytes": 1438477,
+      "sha256": "88c823b16cb14889d769ee90b8f060d1704d0cfd0c273f4b1368aa19685371b7"
+    },
+    {
+      "path": "data/buildings/vieja.json",
+      "bytes": 54871,
+      "sha256": "0fa2366b6b6ac436909c7b3f56c5959f2ce36484e862eec1622b939aa98898b0"
+    },
+    {
+      "path": "data/buildings/yomasa.json",
+      "bytes": 368811,
+      "sha256": "e17f3c64fce2964e00bae731d5dc325256dc96902ebf29b313effc091303d145"
+    },
+    {
+      "path": "data/climate-normals.json",
+      "bytes": 61798,
+      "sha256": "f786be4fba6a8e7e9a04225be0322deeac392f31ea6f99cb862b01cd688db2f9"
+    },
+    {
+      "path": "data/geography-validation.json",
+      "bytes": 316,
+      "sha256": "60ef3aa488067be3c09924a74119e9c9a9fd85d8448d5dd9a8c2c325ae3cfca4"
+    },
+    {
+      "path": "data/hydrography.geojson",
+      "bytes": 5397019,
+      "sha256": "1b979e371e124f466eefc4ba1caa7e73f2af29fb091f2f95374fd97618f787d4"
+    },
+    {
+      "path": "data/idf.json",
+      "bytes": 798,
+      "sha256": "7987652ab6df6712c3c011cd33cdc76c2d14287a6dbfaca4f0af074c29cbc0b3"
+    },
+    {
+      "path": "data/landslide-inventory.geojson",
+      "bytes": 1026706,
+      "sha256": "2534a4b36844abb9ae088954103a8effc9e27d51be75a59315aa04b19ab8cdc7"
+    },
+    {
+      "path": "data/localities.geojson",
+      "bytes": 134059,
+      "sha256": "a54fda9c624081d888a5cda407ad0be2c1fc6c35086f43dd31ee80b95a50222b"
+    },
+    {
+      "path": "data/model-assumptions.json",
+      "bytes": 2077,
+      "sha256": "a2534b5964301ad2e8541a99ec2bdf0345483a64df81a6932b5df779bba40f14"
+    },
+    {
+      "path": "data/provenance.json",
+      "bytes": 1686,
+      "sha256": "8f2dd924a3ad07d9690d2bec6b7303e1c860ea89a117742888f640493ef6403f"
+    },
+    {
+      "path": "data/stations.json",
+      "bytes": 21156,
+      "sha256": "43b63ceaf16afcc95cf21cc571bf105d967cb18a372f97a6a3c1479ca0398ca0"
+    },
+    {
+      "path": "data/terrain/codito.json",
+      "bytes": 29737,
+      "sha256": "f60b75f4f028a79739a54761a6cc29b2bf78fd735e5b653e0730b93825015170"
+    },
+    {
+      "path": "data/terrain/cristobal.json",
+      "bytes": 29759,
+      "sha256": "1513cd6e9ba911fc575f771376591ab06b81b3ba5acd2f779a9fb297e425d75a"
+    },
+    {
+      "path": "data/terrain/esperanza.json",
+      "bytes": 29737,
+      "sha256": "9c063677dcd5fbdacf5ebad2e901a8450465d81fe81ef016db0ef927d27380b4"
+    },
+    {
+      "path": "data/terrain/estancia.json",
+      "bytes": 29758,
+      "sha256": "ea920128e63d50b4d2ecdf11cd8ea7ce722682b7703f9d42f93e88f6a9e7d6a6"
+    },
+    {
+      "path": "data/terrain/paraiso.json",
+      "bytes": 29747,
+      "sha256": "9e2d60d59f2778b55ac35beb395c69d451137bd42dc0944df4bb38f821c8577a"
+    },
+    {
+      "path": "data/watersheds.geojson",
+      "bytes": 323365,
+      "sha256": "f235013ef1f7292b4740869fe81b0eeea541367a2262e4640b27b9853ff96a25"
+    }
+  ]
+}
