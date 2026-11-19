@@ -24,20 +24,20 @@ const NET_COLORS: Record<string, string> = { idiger: '#9ee3cc', eaab: '#71c7f5',
 function ensureWire(map: maplibregl.Map) {
   if (map.getSource('wire')) return;
   map.addSource('wire', { type: 'geojson', data: wireGrid() });
-  map.addSource('wire-loc', { type: 'geojson', data: '/data/localities.geojson' });
+  map.addSource('wire-loc', { type: 'geojson', data: import.meta.env.BASE_URL+'data/localities.geojson' });
   const hidden = { visibility: 'none' as const };
   map.addLayer({ id: 'wire-diag', type: 'line', source: 'wire', filter: ['==', ['get', 'k'], 'd'], layout: hidden, paint: { 'line-color': '#3fb6a8', 'line-width': .5, 'line-opacity': 0 } });
   map.addLayer({ id: 'wire-minor', type: 'line', source: 'wire', filter: ['!=', ['get', 'k'], 'd'], layout: hidden, paint: { 'line-color': '#4fd0bf', 'line-width': .55, 'line-opacity': 0 } });
   map.addLayer({ id: 'wire-major', type: 'line', source: 'wire', filter: ['==', ['get', 'm'], 1], layout: hidden, paint: { 'line-color': '#9af3e2', 'line-width': 1.15, 'line-opacity': 0 } });
   map.addLayer({ id: 'wire-localities', type: 'line', source: 'wire-loc', layout: hidden, paint: { 'line-color': '#e8c47d', 'line-width': 1, 'line-dasharray': [2, 2], 'line-opacity': 0 } });
   // Franges urbaines : anneau vert + rayon lumineux qui le parcourt (enveloppe du drainage urbain EAAB).
-  map.addSource('wire-fringe', { type: 'geojson', data: '/data/urban-fringe.geojson', lineMetrics: true });
+  map.addSource('wire-fringe', { type: 'geojson', data: import.meta.env.BASE_URL+'data/urban-fringe.geojson', lineMetrics: true });
   map.addLayer({ id: 'wire-fringe-glow', type: 'line', source: 'wire-fringe', layout: { ...hidden, 'line-join': 'round' }, paint: { 'line-color': '#5be39a', 'line-width': 7, 'line-blur': 5, 'line-opacity': 0 } });
   map.addLayer({ id: 'wire-fringe', type: 'line', source: 'wire-fringe', layout: { ...hidden, 'line-join': 'round' }, paint: { 'line-color': '#7af0b0', 'line-width': 1.6, 'line-opacity': 0 } });
   map.addLayer({ id: 'wire-ray', type: 'line', source: 'wire-fringe', layout: { ...hidden, 'line-join': 'round', 'line-cap': 'round' }, paint: { 'line-width': 4, 'line-blur': 1.5, 'line-gradient': ['interpolate', ['linear'], ['line-progress'], 0, 'rgba(0,0,0,0)', 1, 'rgba(0,0,0,0)'] } });
   // Petites lumières : les stations de mesure, qui s'allument et s'éteignent chacune à son rythme.
   map.addSource('wire-lights', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-  fetch('/data/networks.json').then(r => r.json()).then(d => { const feats = Object.entries(d.networks as Record<string, { stations: { coordinates: [number, number] }[] }>).flatMap(([k, n]) => n.stations.filter(s => s.coordinates[0] > B.x0 && s.coordinates[0] < B.x1 && s.coordinates[1] > B.y0 && s.coordinates[1] < B.y1).map(s => ({ type: 'Feature' as const, properties: { c: NET_COLORS[k] || '#ffffff', ph: Math.random() * 6.28, sp: .6 + Math.random() * 1.2 }, geometry: { type: 'Point' as const, coordinates: s.coordinates } }))); (map.getSource('wire-lights') as maplibregl.GeoJSONSource | undefined)?.setData({ type: 'FeatureCollection', features: feats }); }).catch(() => {});
+  fetch(import.meta.env.BASE_URL+'data/networks.json').then(r => r.json()).then(d => { const feats = Object.entries(d.networks as Record<string, { stations: { coordinates: [number, number] }[] }>).flatMap(([k, n]) => n.stations.filter(s => s.coordinates[0] > B.x0 && s.coordinates[0] < B.x1 && s.coordinates[1] > B.y0 && s.coordinates[1] < B.y1).map(s => ({ type: 'Feature' as const, properties: { c: NET_COLORS[k] || '#ffffff', ph: Math.random() * 6.28, sp: .6 + Math.random() * 1.2 }, geometry: { type: 'Point' as const, coordinates: s.coordinates } }))); (map.getSource('wire-lights') as maplibregl.GeoJSONSource | undefined)?.setData({ type: 'FeatureCollection', features: feats }); }).catch(() => {});
   const blink = (t: number, k: number): maplibregl.ExpressionSpecification => ['*', k, ['max', 0, ['sin', ['+', ['*', t, ['get', 'sp']], ['get', 'ph']]]]];
   map.addLayer({ id: 'wire-lights-glow', type: 'circle', source: 'wire-lights', layout: hidden, paint: { 'circle-radius': 9, 'circle-blur': 1, 'circle-color': ['get', 'c'], 'circle-opacity': blink(0, .45), 'circle-pitch-alignment': 'map' } });
   map.addLayer({ id: 'wire-lights', type: 'circle', source: 'wire-lights', layout: hidden, paint: { 'circle-radius': 2.6, 'circle-color': ['get', 'c'], 'circle-opacity': blink(0, 1), 'circle-pitch-alignment': 'map' } });
@@ -131,7 +131,7 @@ function enterClimate(map: maplibregl.Map, info: (s: string) => void) {
   try { map.setProjection({ type: 'globe' }); } catch { /* version sans globe */ }
   map.setTerrain(null);
   // Mer masquée (Natural Earth 1:50 m) : ni bathymétrie ni ombrage sous-marin, les vents glissent sur une mer unie.
-  if (!map.getSource('ocean-mask')) { map.addSource('ocean-mask', { type: 'geojson', data: '/data/ocean-mask.geojson' }); map.addLayer({ id: 'ocean-mask', type: 'fill', source: 'ocean-mask', layout: { visibility: 'none' }, paint: { 'fill-color': '#0b1923', 'fill-opacity': .94, 'fill-antialias': true } }); }
+  if (!map.getSource('ocean-mask')) { map.addSource('ocean-mask', { type: 'geojson', data: import.meta.env.BASE_URL+'data/ocean-mask.geojson' }); map.addLayer({ id: 'ocean-mask', type: 'fill', source: 'ocean-mask', layout: { visibility: 'none' }, paint: { 'fill-color': '#0b1923', 'fill-opacity': .94, 'fill-antialias': true } }); }
   map.setLayoutProperty('ocean-mask', 'visibility', 'visible');
   if (map.getLayer('dem-preload')) { paint.set('dem-preload', 'hillshade-exaggeration', 1); paint.set('dem-preload', 'hillshade-shadow-color', '#02080c'); paint.set('dem-preload', 'hillshade-highlight-color', '#d8e8e0'); }
   paint.set('background', 'background-color', '#02060a');

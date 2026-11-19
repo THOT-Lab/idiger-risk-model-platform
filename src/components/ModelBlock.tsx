@@ -32,7 +32,7 @@ function useTimes(t: Territory) {
   const [times, setTimes] = useState<{ tc: number; travel: [number, number]; L: number; dh: number } | null>(null);
   useEffect(() => {
     if (t.hazard !== 'torrential') { setTimes(null); return; }
-    netCache ??= fetch('/data/torrential-network.geojson').then(r => r.json());
+    netCache ??= fetch(import.meta.env.BASE_URL+'data/torrential-network.geojson').then(r => r.json());
     netCache.then(n => {
       const pts = n.features.filter(f => f.properties.territory === t.id);
       const crest = pts.find(f => f.properties.kind === 'crest'), outlet = pts.find(f => f.properties.kind === 'outlet');

@@ -12,7 +12,7 @@ export default function LandslideScene({territory,buildings,scenario,result,prog
  const [orbit,setOrbit]=useState(false),[error,setError]=useState(''),[loaded,setLoaded]=useState(false);const orbitRef=useRef(orbit);orbitRef.current=orbit;
  useEffect(()=>{
   let disposed=false,cleanup:()=>void=()=>{};const element=host.current;if(!element)return;
-  fetch('/data/terrain/'+territory.id+'.json').then(r=>{if(!r.ok)throw Error('No se pudo cargar el relieve documentado.');return r.json() as Promise<TerrainData>;}).then(dem=>{
+  fetch(import.meta.env.BASE_URL+'data/terrain/'+territory.id+'.json').then(r=>{if(!r.ok)throw Error('No se pudo cargar el relieve documentado.');return r.json() as Promise<TerrainData>;}).then(dem=>{
    if(disposed)return;const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
    renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.6));renderer.setSize(element.clientWidth,element.clientHeight);renderer.setClearColor(0x0a1219,1);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.35;element.appendChild(renderer.domElement);
    const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x0a1219,.0026);const camera=new THREE.PerspectiveCamera(38,element.clientWidth/element.clientHeight,.1,800);

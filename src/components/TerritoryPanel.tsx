@@ -7,11 +7,11 @@ import type { Buildings, Station, Territory } from '../lib/types';
 import { decimal, fmt } from '../lib/scenarios';
 type Stats=Record<string,{buildings:number|null;riversKm:number;roadsKm:number|null;estimated?:boolean}>;
 let statsCache:Promise<Stats>|null=null;
-function useTerritoryStats(){const [s,setS]=useState<Stats>({});useEffect(()=>{statsCache??=fetch('/data/territory-stats.json').then(r=>r.ok?r.json():{}).catch(()=>({}));statsCache.then(setS);},[]);return s;}
+function useTerritoryStats(){const [s,setS]=useState<Stats>({});useEffect(()=>{statsCache??=fetch(import.meta.env.BASE_URL+'data/territory-stats.json').then(r=>r.ok?r.json():{}).catch(()=>({}));statsCache.then(setS);},[]);return s;}
 export function TerritoryPanel({showStations,onShowStations,territory,stations,loading,onSimulate,onSources}:{showStations:boolean;onShowStations:(v:boolean)=>void;territory:Territory;stations:Station[];buildings:Buildings;loading:boolean;onSimulate:()=>void;onSources:()=>void}){
 
  const [net,setNet]=useState<{id:string;name:string;network:string;category:string;coordinates:[number,number];inside:boolean}[]>([]);
- useEffect(()=>{fetch('/data/networks.json').then(r=>r.json()).then(d=>setNet((['idiger','eaab','car','ideam','rmcab','sgc','particulares','aerocivil','ciudadana'] as const).filter(k=>d.networks[k]).flatMap(k=>d.networks[k].stations.map((x:{id:string;name:string;category:string;coordinates:[number,number]})=>({...x,network:d.networks[k].name,inside:false}))))).catch(()=>{});},[]);
+ useEffect(()=>{fetch(import.meta.env.BASE_URL+'data/networks.json').then(r=>r.json()).then(d=>setNet((['idiger','eaab','car','ideam','rmcab','sgc','particulares','aerocivil','ciudadana'] as const).filter(k=>d.networks[k]).flatMap(k=>d.networks[k].stations.map((x:{id:string;name:string;category:string;coordinates:[number,number]})=>({...x,network:d.networks[k].name,inside:false}))))).catch(()=>{});},[]);
  // Les trois réseaux, dans le territoire ou à moins de 600 m (comme sur la carte).
  const related=useMemo(()=>{void stations;const zone=buffer(territory.geometry as Polygon,.6,{units:'kilometers'})!;return net.filter(s=>booleanPointInPolygon(s.coordinates,zone)).map(s=>({...s,inside:booleanPointInPolygon(s.coordinates,territory.geometry)})).sort((a,b)=>Number(b.inside)-Number(a.inside));},[net,stations,territory]);
  const stats=useTerritoryStats()[territory.id];

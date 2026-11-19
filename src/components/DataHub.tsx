@@ -44,7 +44,7 @@ export function DataHub({ only }: { only?: DataSection } = {}) {
   const setHover = (h: { s: NetStation; x: number; y: number } | null) => { window.clearTimeout(hoverTimer.current); if (h) { setHoverRaw(h); return; } setHoverRaw(v => v ? { ...v, out: true } : v); hoverTimer.current = window.setTimeout(() => setHoverRaw(null), 200); };
   const [open, setOpen] = useState<'maps' | 'lib' | 'dem' | null>(null);
   useEffect(() => {
-    Promise.all([fetch('/data/networks.json').then(r => r.json()), fetch('/data/localities.geojson').then(r => r.json())]).then(([n, g]) => {
+    Promise.all([fetch(import.meta.env.BASE_URL+'data/networks.json').then(r => r.json()), fetch(import.meta.env.BASE_URL+'data/localities.geojson').then(r => r.json())]).then(([n, g]) => {
       setData(n);
       const out: Ring[] = [];
       for (const f of g.features) { const geom = f.geometry; const polys = geom.type === 'MultiPolygon' ? geom.coordinates : [geom.coordinates]; for (const p of polys) out.push(p[0]); }

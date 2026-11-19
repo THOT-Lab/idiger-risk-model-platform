@@ -1,3 +1,5 @@
+**▶ Prototipo en línea : https://thot-lab.github.io/idiger-risk-model-platform/**
+
 # IDIGER · Risk Model Platform — V2
 
 Application locale en espagnol pour explorer les risques de Bogotá, leurs données et les scénarios climatiques. Cette V2 refond l’accueil, la carte plein écran et le glissement 3D. Les géométries sont documentées ; les animations et les pertes restent illustratives, sans modèle physique calibré.

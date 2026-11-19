@@ -35,7 +35,7 @@ export function prepareBuildings(t:Territory,raw:FeatureCollection,dem?:TerrainD
  const result:Buildings={type:'FeatureCollection',features};buildingCache.set(t.id,result);return result;
 }
 export function createBuildings(t:Territory):Buildings{return buildingCache.get(t.id)||{type:'FeatureCollection',features:[]};}
-export async function loadBuildings(t:Territory){if(buildingCache.has(t.id))return buildingCache.get(t.id)!;const r=await fetch('/data/buildings/'+t.id+'.json');if(!r.ok)throw new Error('No se pudo cargar la muestra de edificaciones');const dem=t.hazard==='landslide'?await fetch('/data/terrain/'+t.id+'.json').then(r=>{if(!r.ok)throw Error('DEM indisponible');return r.json();}):undefined;return prepareBuildings(t,await r.json(),dem);}
+export async function loadBuildings(t:Territory){if(buildingCache.has(t.id))return buildingCache.get(t.id)!;const r=await fetch(import.meta.env.BASE_URL+'data/buildings/'+t.id+'.json');if(!r.ok)throw new Error('No se pudo cargar la muestra de edificaciones');const dem=t.hazard==='landslide'?await fetch(import.meta.env.BASE_URL+'data/terrain/'+t.id+'.json').then(r=>{if(!r.ok)throw Error('DEM indisponible');return r.json();}):undefined;return prepareBuildings(t,await r.json(),dem);}
 export type Damage='low'|'medium'|'high';
 export function damage(b:BuildingProperties,severity:number,progress=1):Damage {
  if(b.slideAlong!==undefined&&b.slideDistance!==undefined){const run=Math.max(0,Math.min(1,(progress-.1)/.78));if(run<=0||b.slideAlong>run||b.slideDistance>severity*Math.min(1,run*7))return'low';return (1-b.slideDistance/Math.max(.01,severity))*b.vulnerability>.35?'high':'medium';}

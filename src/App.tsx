@@ -35,7 +35,7 @@ export default function App(){
  const homeView=home&&!world&&!landing;
  const scenePending=useRef(false),requestId=useRef(0),reducedMotion=useMemo(()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches,[]);
  const closeModal=useCallback(()=>{setModal(returnModal);setReturnModal(null);},[returnModal]);
- useEffect(()=>{fetch('/data/stations.json').then(r=>r.json()).then(setStations).catch(()=>setToast('No se pudo cargar el catálogo de estaciones.'));},[]);
+ useEffect(()=>{fetch(import.meta.env.BASE_URL+'data/stations.json').then(r=>r.json()).then(setStations).catch(()=>setToast('No se pudo cargar el catálogo de estaciones.'));},[]);
  useEffect(()=>{if(!toast)return;const id=setTimeout(()=>setToast(''),4200);return()=>clearTimeout(id);},[toast]);
  useEffect(()=>{if(!playing)return;let id:number,last=performance.now();const tick=(now:number)=>{if(now-last>=100){const delta=(now-last)/22000;last=now;setProgress(p=>{const next=Math.min(1,p+delta);if(next>=1)setPlaying(false);return next;});}id=requestAnimationFrame(tick);};id=requestAnimationFrame(tick);return()=>cancelAnimationFrame(id);},[playing]);
  const result=useMemo(()=>territory?results(territory,scenario,buildings,before?0:progress):null,[territory,scenario,buildings,progress,before]);
