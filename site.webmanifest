@@ -1,0 +1,20 @@
+{
+ "name": "IDIGER · Centro de Modelación de Riesgos",
+ "short_name": "IDIGER",
+ "start_url": "./",
+ "display": "fullscreen",
+ "background_color": "#0a1016",
+ "theme_color": "#0a1016",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}
