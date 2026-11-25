@@ -1,0 +1,30 @@
+[
+  {
+    "file": "stations.json",
+    "source": "Datas Idiger/2026ER13100_Catalogo/Catalogo Estaciones Hidrome.csv",
+    "sha256": "7f951ebb7336f5d7a5ad38b75114d831368dbe68e14567e2dbc5c9e3bb6e2f3a",
+    "note": "Coordenadas y códigos del catálogo recibido; estado histórico, NO telemetría en vivo. La fecha de actualización del CSV requiere confirmación.",
+    "imported": "2026-11-15"
+  },
+  {
+    "file": "idf.json",
+    "source": "Entregables/E2/Rapport Diana/Mallas_y_Datos/idf_eaab.csv",
+    "sha256": "98466b54d9c08074d309f7702acc53a984e7ab85fc2fd55ecd53034eb96bdf50",
+    "note": "Coeficientes del corpus E2 EAAB. Fórmula i=C1*(d+Xo)^C2; minutos y mm/h. Punto 0 de referencia, asignación territorial NO validada.",
+    "imported": "2026-11-15"
+  },
+  {
+    "file": "localities.geojson",
+    "source": "Entregables/E2/Rapport Diana/shapefile_ideca/localidadsinsumapaz.shp",
+    "sha256": "ea0c35cc248edec6962481966fabcc0915789d93a5e2c794e0ea09150802e51f",
+    "note": "19 localidades, Sumapaz excluido en el archivo original. No representa la extensión distrital completa.",
+    "imported": "2026-11-15"
+  },
+  {
+    "file": "landslide-inventory.geojson",
+    "source": "Entregables/E2/Biblioteca/2- IDIGER/AMENAZA POR MOVIMIENTOS EN MASA EN PERSPECTIVA DE CAMBIO CLIMÁTICO 2016/VOL_1_P1_ANEXOS_DTS_AME_MM_URBANO/ANEXO 12-O. Cobertura SIG Inventario/Inventario_PG.shp",
+    "sha256": "6c479787f6679c2ac811264336b075adaeeaa5ebf6f854f57ecdb539809f09dd",
+    "note": "Inventario histórico; TIPO/NOMBRE conservados sin interpretar sus códigos. Transformación desde WKT original; validar precisión geodésica antes de uso operativo.",
+    "imported": "2026-11-15"
+  }
+]

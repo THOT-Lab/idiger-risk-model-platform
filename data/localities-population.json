@@ -1,0 +1,83 @@
+{
+ "source": "DANE, Proyecciones de población de Bogotá D.C. por localidad 2018-2035 (base CNPV 2018), anexo xlsx, hoja Localidades, total por localidad (cabecera + rural) https://www.dane.gov.co/index.php/estadisticas-por-tema/demografia-y-poblacion/proyecciones-de-poblacion/proyecciones-de-poblacion-bogota",
+ "year": 2025,
+ "note": "Serie DANE de 2021 (anexo actualizado el 4/11/2021), anterior a la actualización post-covid DANE-SDP 2025; las cifras pueden diferir de esa serie más reciente. Se excluye Sumapaz (4.021 hab.). Total de las 19 localidades urbanas: 8097391 hab.",
+ "rows": [
+  {
+   "name": "USAQUEN",
+   "pop": 602412
+  },
+  {
+   "name": "CHAPINERO",
+   "pop": 184757
+  },
+  {
+   "name": "SANTA FE",
+   "pop": 107851
+  },
+  {
+   "name": "SAN CRISTOBAL",
+   "pop": 411570
+  },
+  {
+   "name": "USME",
+   "pop": 422489
+  },
+  {
+   "name": "TUNJUELITO",
+   "pop": 186127
+  },
+  {
+   "name": "BOSA",
+   "pop": 737647
+  },
+  {
+   "name": "KENNEDY",
+   "pop": 1041286
+  },
+  {
+   "name": "FONTIBON",
+   "pop": 411638
+  },
+  {
+   "name": "ENGATIVA",
+   "pop": 822369
+  },
+  {
+   "name": "SUBA",
+   "pop": 1332958
+  },
+  {
+   "name": "BARRIOS UNIDOS",
+   "pop": 159163
+  },
+  {
+   "name": "TEUSAQUILLO",
+   "pop": 164384
+  },
+  {
+   "name": "LOS MARTIRES",
+   "pop": 82827
+  },
+  {
+   "name": "ANTONIO NARIÑO",
+   "pop": 86119
+  },
+  {
+   "name": "PUENTE ARANDA",
+   "pop": 259314
+  },
+  {
+   "name": "CANDELARIA",
+   "pop": 18941
+  },
+  {
+   "name": "RAFAEL URIBE URIBE",
+   "pop": 393869
+  },
+  {
+   "name": "CIUDAD BOLIVAR",
+   "pop": 671670
+  }
+ ]
+}
